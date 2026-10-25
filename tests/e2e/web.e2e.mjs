@@ -1,12 +1,15 @@
 import assert from 'node:assert/strict';
 import { spawn, spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
 
-const root = new URL('../../', import.meta.url).pathname.replace(/^\//, '').replaceAll('/', '\\');
-const server = spawn('npm.cmd --workspace apps/web run dev -- --host 127.0.0.1 --port 4173', { cwd: root, shell: true, windowsHide: true, stdio: 'ignore' });
+const root = fileURLToPath(new URL('../../', import.meta.url));
+const npmCommand = process.env.npm_execpath ? process.execPath : process.platform === 'win32' ? 'npm.cmd' : 'npm';
+const npmPrefixArgs = process.env.npm_execpath ? [process.env.npm_execpath] : [];
+const server = spawn(npmCommand, [...npmPrefixArgs, '--workspace', 'apps/web', 'run', 'dev', '--', '--host', '127.0.0.1', '--port', '4173'], { cwd: root, shell: false, windowsHide: true, stdio: 'ignore' });
 async function waitForServer() { for (let i = 0; i < 40; i += 1) { try { const response = await fetch('http://127.0.0.1:4173/'); if (response.ok) return; } catch {} await new Promise((resolve) => setTimeout(resolve, 250)); } throw new Error('Vite server did not start'); }
 await waitForServer();
-const browser = await chromium.launch({ headless: true, executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' });
+const browser = await chromium.launch({ headless: true, executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH || undefined });
 const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
 const consoleErrors = []; const pageErrors = [];
 page.on('console', (message) => { if (message.type() === 'error') consoleErrors.push(message.text()); });

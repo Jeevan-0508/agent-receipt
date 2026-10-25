@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
 :root { font-family: 'Manrope', system-ui, sans-serif; color: #1b1d1e; background: #f4f2ec; font-synthesis: none; }
-* { box-sizing: border-box; } body { margin: 0; } button { font: inherit; color: inherit; border: 0; background: none; cursor: pointer; }
+* { box-sizing: border-box; } body { margin: 0; } button { font: inherit; color: inherit; border: 0; background: none; cursor: pointer; } button:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
 .app { min-height: 100vh; display: flex; background: #f4f2ec; --ink: #1b1d1e; --muted: #737671; --faint: #9a9d97; --line: #deddd5; --panel: #fcfbf8; --sidebar: #ebeae3; --green: #167754; --green-bg: #e3f1e9; --red: #b74035; --red-bg: #f7e6e2; --amber: #b57919; --amber-bg: #f8efda; --blue: #286a9d; --blue-bg: #e5eff6; }
 .app.dark { background: #181a1b; color: #e8e8e2; --ink: #e8e8e2; --muted: #9ea39d; --faint: #777d77; --line: #343836; --panel: #202322; --sidebar: #1d201f; --green: #70d2a9; --green-bg: #203a31; --red: #ec8d80; --red-bg: #422a27; --amber: #e5ba69; --amber-bg: #3d3320; --blue: #8dc2e9; --blue-bg: #243745; }
 .sidebar { width: 252px; flex: 0 0 252px; min-height: 100vh; display: flex; flex-direction: column; padding: 27px 15px 18px; background: var(--sidebar); border-right: 1px solid var(--line); }

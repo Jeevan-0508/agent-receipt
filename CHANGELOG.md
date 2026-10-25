@@ -2,6 +2,8 @@
 
 ## Unreleased — Developer beta
 
+- Added reproducible paired core/SDK tarball packaging, public TypeScript declarations, and an independently installed external consumer test.
+- Added a cross-platform browser runner, packaged SDK/typecheck CI coverage, MCP tutorial, FAQ, first-user guide, and security-review invitation.
 - Added a real local MCP server/client demonstration using the official MCP SDK.
 - Added enforcement-before-execution tests and portable MCP evidence export.
 - Added the public JavaScript SDK (`definePolicy` and `createReceiptAgent`).

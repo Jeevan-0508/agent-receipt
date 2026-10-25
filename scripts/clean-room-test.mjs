@@ -14,7 +14,7 @@ function run(command, args, cwd) {
 }
 try {
   run(npmCommand, [...npmPrefixArgs, 'init', '--yes'], tempProject);
-  run(npmCommand, [...npmPrefixArgs, 'install', '--no-audit', '--no-fund', resolve(root, 'packages/sdk')], tempProject);
+  run(npmCommand, [...npmPrefixArgs, 'install', '--no-audit', '--no-fund', resolve(root, 'packages/core'), resolve(root, 'packages/sdk')], tempProject);
   const consumer = readFileSync(resolve(root, 'examples/external-consumer/consumer.mjs'), 'utf8');
   writeFileSync(join(tempProject, 'consumer.mjs'), consumer);
   const outputDir = join(tempProject, 'receipt-output');

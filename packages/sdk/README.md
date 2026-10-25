@@ -25,12 +25,26 @@ npm run verify -- path/to/package.json
 
 This SDK is a local beta API. It does not provide remote OAuth, durable key custody, replay protection, or a real payment connector.
 
+## TypeScript and package compatibility
+
+The package exports declarations for the public API. A typechecked example is in [`examples/typescript-consumer/consumer.ts`](../../examples/typescript-consumer/consumer.ts).
+
+For this unpublished beta, the reproducible distribution is a pair of local tarballs. From the repository root, build and install them into an independent project:
+
+```bash
+npm pack ./packages/core --pack-destination ./tmp-packages
+npm pack ./packages/sdk --pack-destination ./tmp-packages
+npm install ./tmp-packages/agent-receipt-core-0.1.0-beta.1.tgz ./tmp-packages/agent-receipt-sdk-0.1.0-beta.1.tgz
+```
+
+The SDK depends on the matching core tarball (`0.1.0-beta.1`); do not mix versions. `npm run test:packages` performs the complete install, execution, and independent CLI verification in a temporary project. No npm publication is implied.
+
 ## Local installation from a checkout
 
 The beta is intentionally installable from a repository checkout rather than published to npm:
 
 ```bash
-npm install "../Receipt/packages/sdk"
+npm install "../Receipt/packages/core" "../Receipt/packages/sdk"
 ```
 
 The package exposes a stable `@agent-receipt/sdk` entry point and brings in the local `@agent-receipt/core` package. Consumers should not import files from `packages/*/src` directly.
