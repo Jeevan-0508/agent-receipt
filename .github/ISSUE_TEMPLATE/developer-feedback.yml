@@ -1,0 +1,35 @@
+name: Developer feedback
+description: Report onboarding friction, confusing APIs, or reproducibility problems.
+title: "[Developer feedback]: "
+labels:
+  - developer-experience
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This project is an experimental developer beta. Do not include secrets, private keys, credentials, production evidence, or personal data.
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Include OS, Node version, and Python version if relevant.
+      placeholder: Windows 11, Node 22.14.0, Python 3.12.15
+    validations:
+      required: true
+  - type: textarea
+    id: experience
+    attributes:
+      label: What happened?
+      description: Describe the workflow you attempted and where it became unclear or failed.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Provide safe, copy-pasteable commands or a minimal example with all secrets removed.
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected experience
+      description: What did you expect the documentation, SDK, CLI, or UI to do?

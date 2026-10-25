@@ -1,5 +1,4 @@
-import { generateSigner, actionDigest } from '../../packages/core/src/index.mjs';
-import { createReceiptAgent, definePolicy } from '../../packages/sdk/src/index.mjs';
+import { actionDigest, createReceiptAgent, definePolicy, generateSigner } from '@agent-receipt/sdk';
 
 const principalSigner = generateSigner('did:receipt:user:quickstart');
 const agentSigner = generateSigner('did:receipt:agent:quickstart');

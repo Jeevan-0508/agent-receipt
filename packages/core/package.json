@@ -1,0 +1,12 @@
+{
+  "name": "@agent-receipt/core",
+  "version": "0.1.0-beta.1",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.mjs",
+    "./scenarios": "./src/scenarios.mjs"
+  },
+  "files": ["src", "package.json"],
+  "engines": { "node": ">=20" }
+}

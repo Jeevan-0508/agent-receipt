@@ -9,3 +9,4 @@ examples/travel-booking/package.json
 examples/travel-booking/trusted-keys.json
 examples/mcp-sdk/package.json
 examples/mcp-sdk/trusted-keys.json
+examples/external-consumer/output/

@@ -1,4 +1,4 @@
-import { actionDigest, evaluateAuthorization, signRecord, verifyPackage } from '../../core/src/index.mjs';
+import { actionDigest, evaluateAuthorization, signRecord, verifyPackage, generateSigner } from '@agent-receipt/core';
 
 function requireObject(value, label) {
   if (!value || typeof value !== 'object' || Array.isArray(value)) throw new TypeError(`${label} must be an object`);
@@ -56,4 +56,4 @@ export function createReceiptAgent({ policy, signers, sessionId = 'receipt-sdk-s
   };
 }
 
-export { verifyPackage };
+export { actionDigest, generateSigner, verifyPackage };
