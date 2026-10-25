@@ -1,0 +1,1297 @@
+[
+  {
+    "id": "valid-booking",
+    "label": "Valid booking",
+    "summary": "Signed provider confirmation supports the reported outcome.",
+    "package": {
+      "manifest": {
+        "version": "0.1.0",
+        "packageId": "travel-booking-valid-booking",
+        "createdAt": "2026-10-25T09:12:00.000Z",
+        "profile": "agent-receipt.demo.v1",
+        "recordCount": 3
+      },
+      "keyHints": {
+        "did:receipt:user:maya": "MCowBQYDK2VwAyEAKDOaT9sdpnMo4VjxgRqZR_W6FY5mo89SdwK3s8l3Cq8",
+        "did:receipt:agent:atlas": "MCowBQYDK2VwAyEA6WoDjJGYbK9zN7vvksqboJP5Fzmec2nfQ0j-LhBJNT8",
+        "did:receipt:provider:staywell": "MCowBQYDK2VwAyEAMNdXMD-zH2QyOYnD35SlpEXq2U0P2C6UCK7cIQBCmuM"
+      },
+      "authorization": {
+        "payload": {
+          "id": "grant-hotel-200",
+          "principal": "did:receipt:user:maya",
+          "agent": "did:receipt:agent:atlas",
+          "action": "hotel.book",
+          "resource": "staywell://hotel/berlin/room",
+          "constraints": {
+            "maxAmountCents": 20000,
+            "currency": "EUR",
+            "endpoints": [
+              "https://sandbox.staywell.test/book"
+            ]
+          },
+          "validFrom": "2026-10-25T08:00:00.000Z",
+          "validUntil": "2026-10-25T18:00:00.000Z",
+          "delegation": {
+            "allowed": false,
+            "maxDepth": 0
+          },
+          "revocation": {
+            "status": "active",
+            "checkedAt": "2026-10-25T09:12:00.000Z"
+          },
+          "approval": {
+            "id": "approval-180",
+            "actionDigest": "c4e5f3ee7788317eb10b0348ddec58e2a5f2a52c695dc9f99c7b4e95aed88e79",
+            "signedBy": "did:receipt:user:maya"
+          },
+          "kind": "authorization"
+        },
+        "signer": "did:receipt:user:maya",
+        "alg": "Ed25519",
+        "signature": "BUTrzdUQcJ-y8aDevjZF-GiCF3033HkAlc1NkLcK9iDv_3VGm3Fh7jzpnHTXKdEYpv32XYdVGTHPoo2n9SBmCw",
+        "digest": "9ceab61a68e5945c6ea1fdec9ab1d4bda5587038683af44fcdef2e420cc602f1"
+      },
+      "records": [
+        {
+          "payload": {
+            "id": "exec-search-01",
+            "kind": "execution",
+            "observed": true,
+            "sessionId": "sess-travel-42",
+            "correlationId": "trace-7f4d",
+            "action": {
+              "type": "hotel.search",
+              "resource": "staywell://hotel/berlin/room",
+              "endpoint": "https://sandbox.staywell.test/book",
+              "amountCents": 0,
+              "currency": "EUR",
+              "roomId": "room-berlin-king-01",
+              "checkIn": "2026-11-03",
+              "checkOut": "2026-11-05",
+              "at": "2026-10-25T09:12:00.000Z"
+            },
+            "at": "2026-10-25T09:10:00.000Z",
+            "assertion": "observed-tool-call"
+          },
+          "signer": "did:receipt:agent:atlas",
+          "alg": "Ed25519",
+          "signature": "DNbEpBs-BRm68yEtCWSa8-jW7P1zcGPvKsMWbvelfqUjKG_Ay6J-CCbOIDaRay1mN4nJBsjWNJAwkn9_o6DDCw",
+          "digest": "b5ec29371836d4c71d532ec477e383309a5e335767e937876ec21eb070f95c1d"
+        },
+        {
+          "payload": {
+            "id": "exec-book-01",
+            "kind": "execution",
+            "observed": true,
+            "sessionId": "sess-travel-42",
+            "correlationId": "trace-7f4d",
+            "action": {
+              "type": "hotel.book",
+              "resource": "staywell://hotel/berlin/room",
+              "endpoint": "https://sandbox.staywell.test/book",
+              "amountCents": 18000,
+              "currency": "EUR",
+              "roomId": "room-berlin-king-01",
+              "checkIn": "2026-11-03",
+              "checkOut": "2026-11-05",
+              "at": "2026-10-25T09:12:00.000Z"
+            },
+            "at": "2026-10-25T09:12:00.000Z",
+            "assertion": "observed-tool-call"
+          },
+          "signer": "did:receipt:agent:atlas",
+          "alg": "Ed25519",
+          "signature": "hjxN05gBNiyRTq8gYmmzWUjGtH1G2OTElng-vdw0p6847Xspvefms1NT1xEpK2NFyzFQTlX6ZB8UlldFgQB3Bw",
+          "digest": "058a84eee4c5f34226ab60a28eb7ff2ed5a84e635dc4b70efd3f53758e73427f"
+        },
+        {
+          "payload": {
+            "id": "ack-staywell-01",
+            "kind": "provider_ack",
+            "provider": "did:receipt:provider:staywell",
+            "eventId": "exec-book-01",
+            "correlationId": "trace-7f4d",
+            "actionDigest": "c4e5f3ee7788317eb10b0348ddec58e2a5f2a52c695dc9f99c7b4e95aed88e79",
+            "bookingId": "booking-sandbox-913",
+            "status": "confirmed",
+            "amountCents": 18000,
+            "currency": "EUR",
+            "at": "2026-10-25T09:12:03.000Z"
+          },
+          "signer": "did:receipt:provider:staywell",
+          "alg": "Ed25519",
+          "signature": "Rjkm-mlPDT6U_4t9sYiDC6jDSp9j8oYHG8h0N9x9cL4TNmzowkpNV3u1DMr5mehWcQEOugaXq5vq9WLElYHlAA",
+          "digest": "59a75b933236216386d1de7f1d3f50b79abe12497496deff27f72e7af23ac356"
+        }
+      ],
+      "delegation": null,
+      "metadata": {
+        "scenario": "valid-booking",
+        "simulated": true,
+        "noRealPurchase": true
+      }
+    },
+    "result": {
+      "packageId": "travel-booking-valid-booking",
+      "integrity": "VERIFIED",
+      "signatures": "VERIFIED",
+      "authorization": {
+        "status": "VERIFIED",
+        "findings": [
+          {
+            "status": "VERIFIED",
+            "code": "authority-active",
+            "message": "No revocation was reported at the verification checkpoint."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "resource-match",
+            "message": "Action targets the granted resource."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "amount-within-limit",
+            "message": "Amount is within the grant limit."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "endpoint-allowed",
+            "message": "Endpoint is explicitly allowed."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "within-validity-window",
+            "message": "Action falls inside the grant validity window."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "approval-bound",
+            "message": "Approval digest matches the exact action parameters."
+          }
+        ]
+      },
+      "outcome": {
+        "status": "VERIFIED",
+        "message": "Provider acknowledgement is independently signed and action-bound."
+      },
+      "completeness": "VERIFIED",
+      "overall": "VERIFIED",
+      "recordResults": [
+        {
+          "id": "exec-search-01",
+          "status": "VERIFIED",
+          "code": "signature-valid",
+          "message": "Signature and digest verified."
+        },
+        {
+          "id": "exec-book-01",
+          "status": "VERIFIED",
+          "code": "signature-valid",
+          "message": "Signature and digest verified."
+        },
+        {
+          "id": "ack-staywell-01",
+          "status": "VERIFIED",
+          "code": "signature-valid",
+          "message": "Signature and digest verified."
+        }
+      ]
+    }
+  },
+  {
+    "id": "spending-violation",
+    "label": "Spending violation",
+    "summary": "€450 booking exceeds the €200 authority limit.",
+    "package": {
+      "manifest": {
+        "version": "0.1.0",
+        "packageId": "travel-booking-spending-violation",
+        "createdAt": "2026-10-25T09:12:00.000Z",
+        "profile": "agent-receipt.demo.v1",
+        "recordCount": 2
+      },
+      "keyHints": {
+        "did:receipt:user:maya": "MCowBQYDK2VwAyEAglrmaQokLhMsmcFjSwPj05BdDwN8cD85mzdkX6uF-rQ",
+        "did:receipt:agent:atlas": "MCowBQYDK2VwAyEAbEqGdYyltPxf6YzMDUthjB1uC4Aa65nF5GQXQQTM0fo",
+        "did:receipt:provider:staywell": "MCowBQYDK2VwAyEARScbkoWeUO4aPIpowCt19bd11OG2mXh1ieCEcYvYsCQ"
+      },
+      "authorization": {
+        "payload": {
+          "id": "grant-hotel-200",
+          "principal": "did:receipt:user:maya",
+          "agent": "did:receipt:agent:atlas",
+          "action": "hotel.book",
+          "resource": "staywell://hotel/berlin/room",
+          "constraints": {
+            "maxAmountCents": 20000,
+            "currency": "EUR",
+            "endpoints": [
+              "https://sandbox.staywell.test/book"
+            ]
+          },
+          "validFrom": "2026-10-25T08:00:00.000Z",
+          "validUntil": "2026-10-25T18:00:00.000Z",
+          "delegation": {
+            "allowed": false,
+            "maxDepth": 0
+          },
+          "revocation": {
+            "status": "active",
+            "checkedAt": "2026-10-25T09:12:00.000Z"
+          },
+          "approval": {
+            "id": "approval-180",
+            "actionDigest": "e2656ccc54c09a12ac4fa8b191322710b90cfc4e26a1c688e7324d7421460b07",
+            "signedBy": "did:receipt:user:maya"
+          },
+          "kind": "authorization"
+        },
+        "signer": "did:receipt:user:maya",
+        "alg": "Ed25519",
+        "signature": "wBwPkE6bxU9YhJqevZeJdeIRiOZsaAJrnSSC24yYRu9_JhEOrEJ05_QqkKl-cq9MWi9naFWnDj2UdgnjaTJ9DQ",
+        "digest": "4dbb9e16fe232409ad44aed863ca173fe7b92927426310e603728c8819946fd2"
+      },
+      "records": [
+        {
+          "payload": {
+            "id": "exec-search-01",
+            "kind": "execution",
+            "observed": true,
+            "sessionId": "sess-travel-42",
+            "correlationId": "trace-7f4d",
+            "action": {
+              "type": "hotel.search",
+              "resource": "staywell://hotel/berlin/room",
+              "endpoint": "https://sandbox.staywell.test/book",
+              "amountCents": 0,
+              "currency": "EUR",
+              "roomId": "room-berlin-king-01",
+              "checkIn": "2026-11-03",
+              "checkOut": "2026-11-05",
+              "at": "2026-10-25T09:12:00.000Z"
+            },
+            "at": "2026-10-25T09:10:00.000Z",
+            "assertion": "observed-tool-call"
+          },
+          "signer": "did:receipt:agent:atlas",
+          "alg": "Ed25519",
+          "signature": "QHi8VtTiS-pJVMBJAyYPpZShyMXZmWdCXN4X5qFgb5z6okeQlkHBjE83BWhWoHDQUOuyTvyBsG84jhzebW_iAQ",
+          "digest": "b5ec29371836d4c71d532ec477e383309a5e335767e937876ec21eb070f95c1d"
+        },
+        {
+          "payload": {
+            "id": "exec-book-01",
+            "kind": "execution",
+            "observed": true,
+            "sessionId": "sess-travel-42",
+            "correlationId": "trace-7f4d",
+            "action": {
+              "type": "hotel.book",
+              "resource": "staywell://hotel/berlin/room",
+              "endpoint": "https://sandbox.staywell.test/book",
+              "amountCents": 45000,
+              "currency": "EUR",
+              "roomId": "room-berlin-king-01",
+              "checkIn": "2026-11-03",
+              "checkOut": "2026-11-05",
+              "at": "2026-10-25T09:12:00.000Z"
+            },
+            "at": "2026-10-25T09:12:00.000Z",
+            "assertion": "observed-tool-call"
+          },
+          "signer": "did:receipt:agent:atlas",
+          "alg": "Ed25519",
+          "signature": "IiaExxpLbaA0eQVebSA_Btudn5YKe2NXYa2jd-s6gBLq5oNHVnnR88vJcq2wmxylwC3wflXruxvTrb8ZWACpDQ",
+          "digest": "61b1931e544998249cf25f429f64a32cec2e99245fd56640c81f44151b2ac759"
+        }
+      ],
+      "delegation": null,
+      "metadata": {
+        "scenario": "spending-violation",
+        "simulated": true,
+        "noRealPurchase": true
+      }
+    },
+    "result": {
+      "packageId": "travel-booking-spending-violation",
+      "integrity": "VERIFIED",
+      "signatures": "VERIFIED",
+      "authorization": {
+        "status": "FAILED",
+        "findings": [
+          {
+            "status": "VERIFIED",
+            "code": "authority-active",
+            "message": "No revocation was reported at the verification checkpoint."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "resource-match",
+            "message": "Action targets the granted resource."
+          },
+          {
+            "status": "FAILED",
+            "code": "amount-limit-exceeded",
+            "message": "Amount 45000¢ exceeds 20000¢."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "endpoint-allowed",
+            "message": "Endpoint is explicitly allowed."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "within-validity-window",
+            "message": "Action falls inside the grant validity window."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "approval-bound",
+            "message": "Approval digest matches the exact action parameters."
+          }
+        ]
+      },
+      "outcome": {
+        "status": "INDETERMINATE",
+        "message": "Agent report exists without independent provider confirmation."
+      },
+      "completeness": "INDETERMINATE",
+      "overall": "FAILED",
+      "recordResults": [
+        {
+          "id": "exec-search-01",
+          "status": "VERIFIED",
+          "code": "signature-valid",
+          "message": "Signature and digest verified."
+        },
+        {
+          "id": "exec-book-01",
+          "status": "VERIFIED",
+          "code": "signature-valid",
+          "message": "Signature and digest verified."
+        }
+      ]
+    }
+  },
+  {
+    "id": "parameter-substitution",
+    "label": "Parameter substitution",
+    "summary": "Approval for €180 is reused with altered parameters.",
+    "package": {
+      "manifest": {
+        "version": "0.1.0",
+        "packageId": "travel-booking-parameter-substitution",
+        "createdAt": "2026-10-25T09:12:00.000Z",
+        "profile": "agent-receipt.demo.v1",
+        "recordCount": 2
+      },
+      "keyHints": {
+        "did:receipt:user:maya": "MCowBQYDK2VwAyEATtS8_Z9btQKI5Sruh6gbw-mD7a2Ny6CLi4eG4NlAjC4",
+        "did:receipt:agent:atlas": "MCowBQYDK2VwAyEAnmOikX0vsOGaS7zpwAnGWTrc9iHRcm2Dp2lIcOK_gNE",
+        "did:receipt:provider:staywell": "MCowBQYDK2VwAyEAsZj9Wk8NHARxr0NHzOoy521lSCKikqvN3QIz_jY_Ttg"
+      },
+      "authorization": {
+        "payload": {
+          "id": "grant-hotel-200",
+          "principal": "did:receipt:user:maya",
+          "agent": "did:receipt:agent:atlas",
+          "action": "hotel.book",
+          "resource": "staywell://hotel/berlin/room",
+          "constraints": {
+            "maxAmountCents": 20000,
+            "currency": "EUR",
+            "endpoints": [
+              "https://sandbox.staywell.test/book"
+            ]
+          },
+          "validFrom": "2026-10-25T08:00:00.000Z",
+          "validUntil": "2026-10-25T18:00:00.000Z",
+          "delegation": {
+            "allowed": false,
+            "maxDepth": 0
+          },
+          "revocation": {
+            "status": "active",
+            "checkedAt": "2026-10-25T09:12:00.000Z"
+          },
+          "approval": {
+            "id": "approval-180",
+            "actionDigest": "c4e5f3ee7788317eb10b0348ddec58e2a5f2a52c695dc9f99c7b4e95aed88e79",
+            "signedBy": "did:receipt:user:maya"
+          },
+          "kind": "authorization"
+        },
+        "signer": "did:receipt:user:maya",
+        "alg": "Ed25519",
+        "signature": "aEQKSlr-SIwe26MkZUEWKUDZDJUUXr2d75ahJjXVK-zaEk_jPO82YV-OOJnq_COBl1lzD91c7JKPJDxs6V0aDA",
+        "digest": "9ceab61a68e5945c6ea1fdec9ab1d4bda5587038683af44fcdef2e420cc602f1"
+      },
+      "records": [
+        {
+          "payload": {
+            "id": "exec-search-01",
+            "kind": "execution",
+            "observed": true,
+            "sessionId": "sess-travel-42",
+            "correlationId": "trace-7f4d",
+            "action": {
+              "type": "hotel.search",
+              "resource": "staywell://hotel/berlin/room",
+              "endpoint": "https://sandbox.staywell.test/book",
+              "amountCents": 0,
+              "currency": "EUR",
+              "roomId": "room-berlin-suite-09",
+              "checkIn": "2026-11-03",
+              "checkOut": "2026-11-05",
+              "at": "2026-10-25T09:12:00.000Z"
+            },
+            "at": "2026-10-25T09:10:00.000Z",
+            "assertion": "observed-tool-call"
+          },
+          "signer": "did:receipt:agent:atlas",
+          "alg": "Ed25519",
+          "signature": "Kfl9iYXktqUArxalrvjC1M1VCEAliwcWnHPPbuZGgmVZblEcceuKRU0e4sdJu6C9vKRMnM_sjr-UcVBwuKdcBA",
+          "digest": "293c388a6247203b616486924e8434aa1025c2e7782e42bf800e61d2dbbf2275"
+        },
+        {
+          "payload": {
+            "id": "exec-book-01",
+            "kind": "execution",
+            "observed": true,
+            "sessionId": "sess-travel-42",
+            "correlationId": "trace-7f4d",
+            "action": {
+              "type": "hotel.book",
+              "resource": "staywell://hotel/berlin/room",
+              "endpoint": "https://sandbox.staywell.test/book",
+              "amountCents": 18000,
+              "currency": "EUR",
+              "roomId": "room-berlin-suite-09",
+              "checkIn": "2026-11-03",
+              "checkOut": "2026-11-05",
+              "at": "2026-10-25T09:12:00.000Z"
+            },
+            "at": "2026-10-25T09:12:00.000Z",
+            "assertion": "observed-tool-call"
+          },
+          "signer": "did:receipt:agent:atlas",
+          "alg": "Ed25519",
+          "signature": "FfkIA9O2xO1LOqMeq238P1r2JdOYHyXC0AKiPiSPSZDczo_IWwacSkcWbhiqeWZ8MlyxoU85sfUH5b468tbkCw",
+          "digest": "973c9bb81e619c0c690760f494fff7ee38d867b83ede8dadcb5574c255bbda69"
+        }
+      ],
+      "delegation": null,
+      "metadata": {
+        "scenario": "parameter-substitution",
+        "simulated": true,
+        "noRealPurchase": true
+      }
+    },
+    "result": {
+      "packageId": "travel-booking-parameter-substitution",
+      "integrity": "VERIFIED",
+      "signatures": "VERIFIED",
+      "authorization": {
+        "status": "FAILED",
+        "findings": [
+          {
+            "status": "VERIFIED",
+            "code": "authority-active",
+            "message": "No revocation was reported at the verification checkpoint."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "resource-match",
+            "message": "Action targets the granted resource."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "amount-within-limit",
+            "message": "Amount is within the grant limit."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "endpoint-allowed",
+            "message": "Endpoint is explicitly allowed."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "within-validity-window",
+            "message": "Action falls inside the grant validity window."
+          },
+          {
+            "status": "FAILED",
+            "code": "approval-binding-failed",
+            "message": "Approval is bound to different action parameters."
+          }
+        ]
+      },
+      "outcome": {
+        "status": "INDETERMINATE",
+        "message": "Agent report exists without independent provider confirmation."
+      },
+      "completeness": "INDETERMINATE",
+      "overall": "FAILED",
+      "recordResults": [
+        {
+          "id": "exec-search-01",
+          "status": "VERIFIED",
+          "code": "signature-valid",
+          "message": "Signature and digest verified."
+        },
+        {
+          "id": "exec-book-01",
+          "status": "VERIFIED",
+          "code": "signature-valid",
+          "message": "Signature and digest verified."
+        }
+      ]
+    }
+  },
+  {
+    "id": "unauthorized-delegation",
+    "label": "Unauthorized delegation",
+    "summary": "Agent attempts to delegate a non-delegable grant.",
+    "package": {
+      "manifest": {
+        "version": "0.1.0",
+        "packageId": "travel-booking-unauthorized-delegation",
+        "createdAt": "2026-10-25T09:12:00.000Z",
+        "profile": "agent-receipt.demo.v1",
+        "recordCount": 2
+      },
+      "keyHints": {
+        "did:receipt:user:maya": "MCowBQYDK2VwAyEAilS3OTFDqbF0WFelPYiKwYkJRuoc6u4lK7jxQlHHJ2o",
+        "did:receipt:agent:atlas": "MCowBQYDK2VwAyEAdV4jY4I1ZOASA72lp3Dh7CA0JJ8DkbMtADug1Rtiukc",
+        "did:receipt:provider:staywell": "MCowBQYDK2VwAyEAk_JtSAumCNL_JJ47nCZGu18nFTtxHmnnXvo0Rg6-ezo"
+      },
+      "authorization": {
+        "payload": {
+          "id": "grant-hotel-200",
+          "principal": "did:receipt:user:maya",
+          "agent": "did:receipt:agent:atlas",
+          "action": "hotel.book",
+          "resource": "staywell://hotel/berlin/room",
+          "constraints": {
+            "maxAmountCents": 20000,
+            "currency": "EUR",
+            "endpoints": [
+              "https://sandbox.staywell.test/book"
+            ]
+          },
+          "validFrom": "2026-10-25T08:00:00.000Z",
+          "validUntil": "2026-10-25T18:00:00.000Z",
+          "delegation": {
+            "allowed": false,
+            "maxDepth": 0
+          },
+          "revocation": {
+            "status": "active",
+            "checkedAt": "2026-10-25T09:12:00.000Z"
+          },
+          "approval": {
+            "id": "approval-180",
+            "actionDigest": "c4e5f3ee7788317eb10b0348ddec58e2a5f2a52c695dc9f99c7b4e95aed88e79",
+            "signedBy": "did:receipt:user:maya"
+          },
+          "kind": "authorization"
+        },
+        "signer": "did:receipt:user:maya",
+        "alg": "Ed25519",
+        "signature": "F2R3aLm8-hqToOeNNdYmUPuKgvuK_uIFQ2M8LHvXrLjEMG2SDgzs3ioxEsQ54mznsWXpIbLuZxNO5soXQrx8DA",
+        "digest": "9ceab61a68e5945c6ea1fdec9ab1d4bda5587038683af44fcdef2e420cc602f1"
+      },
+      "records": [
+        {
+          "payload": {
+            "id": "exec-search-01",
+            "kind": "execution",
+            "observed": true,
+            "sessionId": "sess-travel-42",
+            "correlationId": "trace-7f4d",
+            "action": {
+              "type": "hotel.search",
+              "resource": "staywell://hotel/berlin/room",
+              "endpoint": "https://sandbox.staywell.test/book",
+              "amountCents": 0,
+              "currency": "EUR",
+              "roomId": "room-berlin-king-01",
+              "checkIn": "2026-11-03",
+              "checkOut": "2026-11-05",
+              "at": "2026-10-25T09:12:00.000Z"
+            },
+            "at": "2026-10-25T09:10:00.000Z",
+            "assertion": "observed-tool-call"
+          },
+          "signer": "did:receipt:agent:atlas",
+          "alg": "Ed25519",
+          "signature": "xpNYodVgkFzEIYLV_sRoWJ8-piG7lDgUw7fjLSfz_RqJ7Pp7gl7n4oZnRrp8GYX7x4WR4lLF4AIfTgL2MgUPAg",
+          "digest": "b5ec29371836d4c71d532ec477e383309a5e335767e937876ec21eb070f95c1d"
+        },
+        {
+          "payload": {
+            "id": "exec-book-01",
+            "kind": "execution",
+            "observed": true,
+            "sessionId": "sess-travel-42",
+            "correlationId": "trace-7f4d",
+            "action": {
+              "type": "hotel.book",
+              "resource": "staywell://hotel/berlin/room",
+              "endpoint": "https://sandbox.staywell.test/book",
+              "amountCents": 18000,
+              "currency": "EUR",
+              "roomId": "room-berlin-king-01",
+              "checkIn": "2026-11-03",
+              "checkOut": "2026-11-05",
+              "at": "2026-10-25T09:12:00.000Z"
+            },
+            "at": "2026-10-25T09:12:00.000Z",
+            "assertion": "observed-tool-call"
+          },
+          "signer": "did:receipt:agent:atlas",
+          "alg": "Ed25519",
+          "signature": "U3rOcEGF0FWLIpgfsxbtviW7QYn1DayvyxNHYzP6B48YMwvc9gQSaC-d_lCVCzi4hsuM2X3pRx78goigBLg1Dw",
+          "digest": "058a84eee4c5f34226ab60a28eb7ff2ed5a84e635dc4b70efd3f53758e73427f"
+        }
+      ],
+      "delegation": {
+        "payload": {
+          "id": "delegation-01",
+          "kind": "delegation",
+          "from": "did:receipt:agent:atlas",
+          "to": "did:receipt:agent:helper",
+          "depth": 1,
+          "amountCents": 20000,
+          "at": "2026-10-25T09:12:00.000Z"
+        },
+        "signer": "did:receipt:agent:atlas",
+        "alg": "Ed25519",
+        "signature": "5vqYLzY5w3WYDsy71KHSrDIdWo1X-HnHbdjfXLpVeA47ZvHsuE82arzO464Z2l3oXMC3dkay0sz6979o_-EFCA",
+        "digest": "ed6968f9d73ac825f648621203ef7f928ac0d2452a3d4a0dac990c2c1a4b2dd1"
+      },
+      "metadata": {
+        "scenario": "unauthorized-delegation",
+        "simulated": true,
+        "noRealPurchase": true
+      }
+    },
+    "result": {
+      "packageId": "travel-booking-unauthorized-delegation",
+      "integrity": "VERIFIED",
+      "signatures": "VERIFIED",
+      "authorization": {
+        "status": "FAILED",
+        "findings": [
+          {
+            "status": "VERIFIED",
+            "code": "authority-active",
+            "message": "No revocation was reported at the verification checkpoint."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "resource-match",
+            "message": "Action targets the granted resource."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "amount-within-limit",
+            "message": "Amount is within the grant limit."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "endpoint-allowed",
+            "message": "Endpoint is explicitly allowed."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "within-validity-window",
+            "message": "Action falls inside the grant validity window."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "approval-bound",
+            "message": "Approval digest matches the exact action parameters."
+          },
+          {
+            "status": "FAILED",
+            "code": "delegation-not-allowed",
+            "message": "This grant cannot be delegated."
+          }
+        ]
+      },
+      "outcome": {
+        "status": "INDETERMINATE",
+        "message": "Agent report exists without independent provider confirmation."
+      },
+      "completeness": "INDETERMINATE",
+      "overall": "FAILED",
+      "recordResults": [
+        {
+          "id": "exec-search-01",
+          "status": "VERIFIED",
+          "code": "signature-valid",
+          "message": "Signature and digest verified."
+        },
+        {
+          "id": "exec-book-01",
+          "status": "VERIFIED",
+          "code": "signature-valid",
+          "message": "Signature and digest verified."
+        }
+      ]
+    }
+  },
+  {
+    "id": "tampered-evidence",
+    "label": "Tampered evidence",
+    "summary": "A signed execution record is modified after issuance.",
+    "package": {
+      "manifest": {
+        "version": "0.1.0",
+        "packageId": "travel-booking-valid-booking",
+        "createdAt": "2026-10-25T09:12:00.000Z",
+        "profile": "agent-receipt.demo.v1",
+        "recordCount": 3
+      },
+      "keyHints": {
+        "did:receipt:user:maya": "MCowBQYDK2VwAyEA13bWM3xev7unloyQJ8UcCGcqKCED8lxJXb6FWt68W6I",
+        "did:receipt:agent:atlas": "MCowBQYDK2VwAyEA6AaYhcphq3-PyDVYYqJXJ6sG6rT_ib85xvXmNo_vkJE",
+        "did:receipt:provider:staywell": "MCowBQYDK2VwAyEAPRDndVcoEnVdPnpiRzCXtGAJHvBQMqJoW4WV7_4G9TQ"
+      },
+      "authorization": {
+        "payload": {
+          "id": "grant-hotel-200",
+          "principal": "did:receipt:user:maya",
+          "agent": "did:receipt:agent:atlas",
+          "action": "hotel.book",
+          "resource": "staywell://hotel/berlin/room",
+          "constraints": {
+            "maxAmountCents": 20000,
+            "currency": "EUR",
+            "endpoints": [
+              "https://sandbox.staywell.test/book"
+            ]
+          },
+          "validFrom": "2026-10-25T08:00:00.000Z",
+          "validUntil": "2026-10-25T18:00:00.000Z",
+          "delegation": {
+            "allowed": false,
+            "maxDepth": 0
+          },
+          "revocation": {
+            "status": "active",
+            "checkedAt": "2026-10-25T09:12:00.000Z"
+          },
+          "approval": {
+            "id": "approval-180",
+            "actionDigest": "c4e5f3ee7788317eb10b0348ddec58e2a5f2a52c695dc9f99c7b4e95aed88e79",
+            "signedBy": "did:receipt:user:maya"
+          },
+          "kind": "authorization"
+        },
+        "signer": "did:receipt:user:maya",
+        "alg": "Ed25519",
+        "signature": "PZL5GWcPhRyIxc9HkvYU1Jl94ZzEVFpPaMapRRzOF4GTfkUV1e4gsfiq-SJBixaLUxGebhXRemhZ5cMYj7SWAQ",
+        "digest": "9ceab61a68e5945c6ea1fdec9ab1d4bda5587038683af44fcdef2e420cc602f1"
+      },
+      "records": [
+        {
+          "payload": {
+            "id": "exec-search-01",
+            "kind": "execution",
+            "observed": true,
+            "sessionId": "sess-travel-42",
+            "correlationId": "trace-7f4d",
+            "action": {
+              "type": "hotel.search",
+              "resource": "staywell://hotel/berlin/room",
+              "endpoint": "https://sandbox.staywell.test/book",
+              "amountCents": 0,
+              "currency": "EUR",
+              "roomId": "room-berlin-king-01",
+              "checkIn": "2026-11-03",
+              "checkOut": "2026-11-05",
+              "at": "2026-10-25T09:12:00.000Z"
+            },
+            "at": "2026-10-25T09:10:00.000Z",
+            "assertion": "observed-tool-call"
+          },
+          "signer": "did:receipt:agent:atlas",
+          "alg": "Ed25519",
+          "signature": "fySGgDOQQidFLZhu1Xaek4oFxeopHHtgBuoJbG4zfXoHd4KYa8xGUkbq0hwNHi1Nh76CDLZo0waFPmIQRC4aBQ",
+          "digest": "b5ec29371836d4c71d532ec477e383309a5e335767e937876ec21eb070f95c1d"
+        },
+        {
+          "payload": {
+            "id": "exec-book-01",
+            "kind": "execution",
+            "observed": true,
+            "sessionId": "sess-travel-42",
+            "correlationId": "trace-7f4d",
+            "action": {
+              "type": "hotel.book",
+              "resource": "staywell://hotel/berlin/room",
+              "endpoint": "https://sandbox.staywell.test/book",
+              "amountCents": 19000,
+              "currency": "EUR",
+              "roomId": "room-berlin-king-01",
+              "checkIn": "2026-11-03",
+              "checkOut": "2026-11-05",
+              "at": "2026-10-25T09:12:00.000Z"
+            },
+            "at": "2026-10-25T09:12:00.000Z",
+            "assertion": "observed-tool-call"
+          },
+          "signer": "did:receipt:agent:atlas",
+          "alg": "Ed25519",
+          "signature": "z0AZdsj2OP4LDIFtpVyl_mXXPetwuDz_FKtJpJJUVkyt_rVx0BxqJkXChEKx55hMVeW0FYQr2a1mMmbPl6k6Bw",
+          "digest": "058a84eee4c5f34226ab60a28eb7ff2ed5a84e635dc4b70efd3f53758e73427f"
+        },
+        {
+          "payload": {
+            "id": "ack-staywell-01",
+            "kind": "provider_ack",
+            "provider": "did:receipt:provider:staywell",
+            "eventId": "exec-book-01",
+            "correlationId": "trace-7f4d",
+            "actionDigest": "c4e5f3ee7788317eb10b0348ddec58e2a5f2a52c695dc9f99c7b4e95aed88e79",
+            "bookingId": "booking-sandbox-913",
+            "status": "confirmed",
+            "amountCents": 18000,
+            "currency": "EUR",
+            "at": "2026-10-25T09:12:03.000Z"
+          },
+          "signer": "did:receipt:provider:staywell",
+          "alg": "Ed25519",
+          "signature": "5T-8dOUEV38IFtsp3r94JQaKA15vCQ-W75fqFiCQH4C-kqNxRlzgC8bQNnOh6uAoPPndlx64BqHuvHtB62CRAA",
+          "digest": "59a75b933236216386d1de7f1d3f50b79abe12497496deff27f72e7af23ac356"
+        }
+      ],
+      "delegation": null,
+      "metadata": {
+        "scenario": "valid-booking",
+        "simulated": true,
+        "noRealPurchase": true
+      }
+    },
+    "result": {
+      "packageId": "travel-booking-valid-booking",
+      "integrity": "FAILED",
+      "signatures": "FAILED",
+      "authorization": {
+        "status": "FAILED",
+        "findings": [
+          {
+            "status": "VERIFIED",
+            "code": "authority-active",
+            "message": "No revocation was reported at the verification checkpoint."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "resource-match",
+            "message": "Action targets the granted resource."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "amount-within-limit",
+            "message": "Amount is within the grant limit."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "endpoint-allowed",
+            "message": "Endpoint is explicitly allowed."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "within-validity-window",
+            "message": "Action falls inside the grant validity window."
+          },
+          {
+            "status": "FAILED",
+            "code": "approval-binding-failed",
+            "message": "Approval is bound to different action parameters."
+          }
+        ]
+      },
+      "outcome": {
+        "status": "FAILED",
+        "message": "Provider acknowledgement does not bind to the executed action."
+      },
+      "completeness": "VERIFIED",
+      "overall": "FAILED",
+      "recordResults": [
+        {
+          "id": "exec-search-01",
+          "status": "VERIFIED",
+          "code": "signature-valid",
+          "message": "Signature and digest verified."
+        },
+        {
+          "id": "exec-book-01",
+          "status": "FAILED",
+          "code": "signature-invalid",
+          "message": "Signature does not match the received payload."
+        },
+        {
+          "id": "ack-staywell-01",
+          "status": "VERIFIED",
+          "code": "signature-valid",
+          "message": "Signature and digest verified."
+        }
+      ]
+    }
+  },
+  {
+    "id": "missing-provider-confirmation",
+    "label": "Missing provider confirmation",
+    "summary": "Agent reports success without an independent acknowledgement.",
+    "package": {
+      "manifest": {
+        "version": "0.1.0",
+        "packageId": "travel-booking-missing-provider-confirmation",
+        "createdAt": "2026-10-25T09:12:00.000Z",
+        "profile": "agent-receipt.demo.v1",
+        "recordCount": 2
+      },
+      "keyHints": {
+        "did:receipt:user:maya": "MCowBQYDK2VwAyEATJ1bWurqbE4UkACNJlic0GeQD3NUfzy5WIyJtJ-vdzM",
+        "did:receipt:agent:atlas": "MCowBQYDK2VwAyEAA64whiSd14xJSGCW_zXiNwxM6ZKJiFnYibIznbdUQrE",
+        "did:receipt:provider:staywell": "MCowBQYDK2VwAyEAm-IQRd_hLSxDMgKofm-YeaVB1ECBAvmveafBiAKeHKM"
+      },
+      "authorization": {
+        "payload": {
+          "id": "grant-hotel-200",
+          "principal": "did:receipt:user:maya",
+          "agent": "did:receipt:agent:atlas",
+          "action": "hotel.book",
+          "resource": "staywell://hotel/berlin/room",
+          "constraints": {
+            "maxAmountCents": 20000,
+            "currency": "EUR",
+            "endpoints": [
+              "https://sandbox.staywell.test/book"
+            ]
+          },
+          "validFrom": "2026-10-25T08:00:00.000Z",
+          "validUntil": "2026-10-25T18:00:00.000Z",
+          "delegation": {
+            "allowed": false,
+            "maxDepth": 0
+          },
+          "revocation": {
+            "status": "active",
+            "checkedAt": "2026-10-25T09:12:00.000Z"
+          },
+          "approval": {
+            "id": "approval-180",
+            "actionDigest": "c4e5f3ee7788317eb10b0348ddec58e2a5f2a52c695dc9f99c7b4e95aed88e79",
+            "signedBy": "did:receipt:user:maya"
+          },
+          "kind": "authorization"
+        },
+        "signer": "did:receipt:user:maya",
+        "alg": "Ed25519",
+        "signature": "kdSJ-wa5DNsgAxuKEizzXLntFOWnFEYbpSVoo0WXqSxpQecsjPCmXSuNW89YVRtgicyGYgEjO5VqeqrBf_ThCg",
+        "digest": "9ceab61a68e5945c6ea1fdec9ab1d4bda5587038683af44fcdef2e420cc602f1"
+      },
+      "records": [
+        {
+          "payload": {
+            "id": "exec-search-01",
+            "kind": "execution",
+            "observed": true,
+            "sessionId": "sess-travel-42",
+            "correlationId": "trace-7f4d",
+            "action": {
+              "type": "hotel.search",
+              "resource": "staywell://hotel/berlin/room",
+              "endpoint": "https://sandbox.staywell.test/book",
+              "amountCents": 0,
+              "currency": "EUR",
+              "roomId": "room-berlin-king-01",
+              "checkIn": "2026-11-03",
+              "checkOut": "2026-11-05",
+              "at": "2026-10-25T09:12:00.000Z"
+            },
+            "at": "2026-10-25T09:10:00.000Z",
+            "assertion": "observed-tool-call"
+          },
+          "signer": "did:receipt:agent:atlas",
+          "alg": "Ed25519",
+          "signature": "cFyrmugb2rYs1emZJXdAg9wqrHYlKSu07TSs34sLbcXw1uWdg29LEo6jO_9aHyUt8sms53J0Re6ujZdNoC8jAA",
+          "digest": "b5ec29371836d4c71d532ec477e383309a5e335767e937876ec21eb070f95c1d"
+        },
+        {
+          "payload": {
+            "id": "exec-book-01",
+            "kind": "execution",
+            "observed": true,
+            "sessionId": "sess-travel-42",
+            "correlationId": "trace-7f4d",
+            "action": {
+              "type": "hotel.book",
+              "resource": "staywell://hotel/berlin/room",
+              "endpoint": "https://sandbox.staywell.test/book",
+              "amountCents": 18000,
+              "currency": "EUR",
+              "roomId": "room-berlin-king-01",
+              "checkIn": "2026-11-03",
+              "checkOut": "2026-11-05",
+              "at": "2026-10-25T09:12:00.000Z"
+            },
+            "at": "2026-10-25T09:12:00.000Z",
+            "assertion": "observed-tool-call"
+          },
+          "signer": "did:receipt:agent:atlas",
+          "alg": "Ed25519",
+          "signature": "LHUK6VKBD2HeAq86ZlA-OwlKHzksFbr564iTl9ibuaC90q6fiBPdU1kLBux0qrYKzf9Q21tonmvSAAkVumNxDQ",
+          "digest": "058a84eee4c5f34226ab60a28eb7ff2ed5a84e635dc4b70efd3f53758e73427f"
+        }
+      ],
+      "delegation": null,
+      "metadata": {
+        "scenario": "missing-provider-confirmation",
+        "simulated": true,
+        "noRealPurchase": true
+      }
+    },
+    "result": {
+      "packageId": "travel-booking-missing-provider-confirmation",
+      "integrity": "VERIFIED",
+      "signatures": "VERIFIED",
+      "authorization": {
+        "status": "VERIFIED",
+        "findings": [
+          {
+            "status": "VERIFIED",
+            "code": "authority-active",
+            "message": "No revocation was reported at the verification checkpoint."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "resource-match",
+            "message": "Action targets the granted resource."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "amount-within-limit",
+            "message": "Amount is within the grant limit."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "endpoint-allowed",
+            "message": "Endpoint is explicitly allowed."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "within-validity-window",
+            "message": "Action falls inside the grant validity window."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "approval-bound",
+            "message": "Approval digest matches the exact action parameters."
+          }
+        ]
+      },
+      "outcome": {
+        "status": "INDETERMINATE",
+        "message": "Agent report exists without independent provider confirmation."
+      },
+      "completeness": "INDETERMINATE",
+      "overall": "INDETERMINATE",
+      "recordResults": [
+        {
+          "id": "exec-search-01",
+          "status": "VERIFIED",
+          "code": "signature-valid",
+          "message": "Signature and digest verified."
+        },
+        {
+          "id": "exec-book-01",
+          "status": "VERIFIED",
+          "code": "signature-valid",
+          "message": "Signature and digest verified."
+        }
+      ]
+    }
+  },
+  {
+    "id": "revoked-authority",
+    "label": "Revoked authority",
+    "summary": "A grant is revoked before a new action.",
+    "package": {
+      "manifest": {
+        "version": "0.1.0",
+        "packageId": "travel-booking-revoked-authority",
+        "createdAt": "2026-10-25T09:12:00.000Z",
+        "profile": "agent-receipt.demo.v1",
+        "recordCount": 2
+      },
+      "keyHints": {
+        "did:receipt:user:maya": "MCowBQYDK2VwAyEASjLviu-p2EHqKuWHaiim5oeF-tAh5eRSuuo2t0bi8PI",
+        "did:receipt:agent:atlas": "MCowBQYDK2VwAyEA6FV6aqiceJ2nZ1rkvJel1Pe0aCC-La8nnBTB5TXh_bQ",
+        "did:receipt:provider:staywell": "MCowBQYDK2VwAyEA-42a9oVLJVEMIVzy1X5shKHEVendTQ4rYkdkdWwUrkM"
+      },
+      "authorization": {
+        "payload": {
+          "id": "grant-hotel-200",
+          "principal": "did:receipt:user:maya",
+          "agent": "did:receipt:agent:atlas",
+          "action": "hotel.book",
+          "resource": "staywell://hotel/berlin/room",
+          "constraints": {
+            "maxAmountCents": 20000,
+            "currency": "EUR",
+            "endpoints": [
+              "https://sandbox.staywell.test/book"
+            ]
+          },
+          "validFrom": "2026-10-25T08:00:00.000Z",
+          "validUntil": "2026-10-25T18:00:00.000Z",
+          "delegation": {
+            "allowed": false,
+            "maxDepth": 0
+          },
+          "revocation": {
+            "status": "revoked",
+            "checkedAt": "2026-10-25T09:12:00.000Z",
+            "evidence": "revoke-2026-10-25-0900"
+          },
+          "approval": {
+            "id": "approval-180",
+            "actionDigest": "c4e5f3ee7788317eb10b0348ddec58e2a5f2a52c695dc9f99c7b4e95aed88e79",
+            "signedBy": "did:receipt:user:maya"
+          },
+          "kind": "authorization"
+        },
+        "signer": "did:receipt:user:maya",
+        "alg": "Ed25519",
+        "signature": "dqHoXGXrbHK3s-xe4AJa1Uj_6bvTb2RIBGYe1ylfG2daVlcgvARzI36CXSaBwvJDKNwoFZinWRy1OikyY-kkDg",
+        "digest": "2430628902eb20ee30da5224c7eabd0476413679a20e460da5c1d31e001c8621"
+      },
+      "records": [
+        {
+          "payload": {
+            "id": "exec-search-01",
+            "kind": "execution",
+            "observed": true,
+            "sessionId": "sess-travel-42",
+            "correlationId": "trace-7f4d",
+            "action": {
+              "type": "hotel.search",
+              "resource": "staywell://hotel/berlin/room",
+              "endpoint": "https://sandbox.staywell.test/book",
+              "amountCents": 0,
+              "currency": "EUR",
+              "roomId": "room-berlin-king-01",
+              "checkIn": "2026-11-03",
+              "checkOut": "2026-11-05",
+              "at": "2026-10-25T09:12:00.000Z"
+            },
+            "at": "2026-10-25T09:10:00.000Z",
+            "assertion": "observed-tool-call"
+          },
+          "signer": "did:receipt:agent:atlas",
+          "alg": "Ed25519",
+          "signature": "3vP07NbImvLxgZFoaa0UjAcDjXALks9WLCT9TreBRX0xPfFVhyZsSrFYByDRYBBgU4NgcmU3OG280dcg9V7oDQ",
+          "digest": "b5ec29371836d4c71d532ec477e383309a5e335767e937876ec21eb070f95c1d"
+        },
+        {
+          "payload": {
+            "id": "exec-book-01",
+            "kind": "execution",
+            "observed": true,
+            "sessionId": "sess-travel-42",
+            "correlationId": "trace-7f4d",
+            "action": {
+              "type": "hotel.book",
+              "resource": "staywell://hotel/berlin/room",
+              "endpoint": "https://sandbox.staywell.test/book",
+              "amountCents": 18000,
+              "currency": "EUR",
+              "roomId": "room-berlin-king-01",
+              "checkIn": "2026-11-03",
+              "checkOut": "2026-11-05",
+              "at": "2026-10-25T09:12:00.000Z"
+            },
+            "at": "2026-10-25T09:12:00.000Z",
+            "assertion": "observed-tool-call"
+          },
+          "signer": "did:receipt:agent:atlas",
+          "alg": "Ed25519",
+          "signature": "uuh3kM_Jp__Qvzuqs6rGPvO9V7zrL5JxUAlCas-AQ7aU2CTR3v1sGorusJw5YfA-mDc4DJ8ZG13lT1SjIGc8DQ",
+          "digest": "058a84eee4c5f34226ab60a28eb7ff2ed5a84e635dc4b70efd3f53758e73427f"
+        }
+      ],
+      "delegation": null,
+      "metadata": {
+        "scenario": "revoked-authority",
+        "simulated": true,
+        "noRealPurchase": true
+      }
+    },
+    "result": {
+      "packageId": "travel-booking-revoked-authority",
+      "integrity": "VERIFIED",
+      "signatures": "VERIFIED",
+      "authorization": {
+        "status": "FAILED",
+        "findings": [
+          {
+            "status": "FAILED",
+            "code": "authority-revoked",
+            "message": "The grant was revoked before this action."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "resource-match",
+            "message": "Action targets the granted resource."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "amount-within-limit",
+            "message": "Amount is within the grant limit."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "endpoint-allowed",
+            "message": "Endpoint is explicitly allowed."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "within-validity-window",
+            "message": "Action falls inside the grant validity window."
+          },
+          {
+            "status": "VERIFIED",
+            "code": "approval-bound",
+            "message": "Approval digest matches the exact action parameters."
+          }
+        ]
+      },
+      "outcome": {
+        "status": "INDETERMINATE",
+        "message": "Agent report exists without independent provider confirmation."
+      },
+      "completeness": "INDETERMINATE",
+      "overall": "FAILED",
+      "recordResults": [
+        {
+          "id": "exec-search-01",
+          "status": "VERIFIED",
+          "code": "signature-valid",
+          "message": "Signature and digest verified."
+        },
+        {
+          "id": "exec-book-01",
+          "status": "VERIFIED",
+          "code": "signature-valid",
+          "message": "Signature and digest verified."
+        }
+      ]
+    }
+  }
+]

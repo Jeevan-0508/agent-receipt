@@ -1,0 +1,113 @@
+{
+  "version": "0.1",
+  "case": "invalid-trust-anchor",
+  "expected": "FAILED",
+  "trustedKeys": {
+    "did:receipt:user:vector": "MCowBQYDK2VwAyEAA6EHv_POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg",
+    "did:receipt:agent:vector": "MCowBQYDK2VwAyEAKay64UG8yvCyLhqU000LxzYeUm0L_hLIl5S8kyKWbdc",
+    "did:receipt:provider:vector": "MCowBQYDK2VwAyEAKay64UG8yvCyLhqU000LxzYeUm0L_hLIl5S8kyKWbdc"
+  },
+  "package": {
+    "manifest": {
+      "version": "0.1.0",
+      "packageId": "vector-invalid-trust-anchor",
+      "createdAt": "2026-10-25T09:12:00.000Z",
+      "profile": "agent-receipt.demo.v1",
+      "recordCount": 2
+    },
+    "keyHints": {
+      "did:receipt:user:vector": "MCowBQYDK2VwAyEAA6EHv_POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg",
+      "did:receipt:agent:vector": "MCowBQYDK2VwAyEAKay64UG8yvCyLhqU000LxzYeUm0L_hLIl5S8kyKWbdc",
+      "did:receipt:provider:vector": "MCowBQYDK2VwAyEAJUO5L_EJVRFHatyDadtt3JM2ZaEZeN2hQE7hBmypVZ0"
+    },
+    "authorization": {
+      "payload": {
+        "id": "vector-grant",
+        "principal": "did:receipt:user:vector",
+        "agent": "did:receipt:agent:vector",
+        "action": "hotel.book",
+        "resource": "staywell://hotel/berlin/room",
+        "constraints": {
+          "maxAmountCents": 20000,
+          "currency": "EUR",
+          "endpoints": [
+            "https://sandbox.staywell.test/book"
+          ]
+        },
+        "validFrom": "2026-10-25T08:00:00.000Z",
+        "validUntil": "2026-10-25T18:00:00.000Z",
+        "delegation": {
+          "allowed": false,
+          "maxDepth": 0
+        },
+        "revocation": {
+          "status": "active",
+          "checkedAt": "2026-10-25T09:12:00.000Z"
+        },
+        "approval": {
+          "id": "vector-approval",
+          "actionDigest": "0cb664bbbc8b26a133f53f015e6aa15ee3024a88fb260990b58f2e98687b98c6",
+          "signedBy": "did:receipt:user:vector"
+        },
+        "kind": "authorization"
+      },
+      "signer": "did:receipt:user:vector",
+      "alg": "Ed25519",
+      "signature": "ue0s19sadNpseb71mYtLYAOfdne7xGo30G6s29hsPkoQ2ap8KG601J7vfr3gLwOhaWl7LQY3dndo_mj5nUmmBw",
+      "digest": "2e3395c2969421610c48b0583509f961de791fbca94acca127870e2936cde86f"
+    },
+    "records": [
+      {
+        "payload": {
+          "id": "valid-execution",
+          "kind": "execution",
+          "observed": true,
+          "sessionId": "vector-session",
+          "correlationId": "vector-trace",
+          "action": {
+            "type": "hotel.book",
+            "resource": "staywell://hotel/berlin/room",
+            "endpoint": "https://sandbox.staywell.test/book",
+            "amountCents": 18000,
+            "currency": "EUR",
+            "roomId": "vector-room",
+            "checkIn": "2026-11-03",
+            "checkOut": "2026-11-05",
+            "at": "2026-10-25T09:12:00.000Z"
+          },
+          "at": "2026-10-25T09:12:00.000Z",
+          "assertion": "observed-tool-call"
+        },
+        "signer": "did:receipt:agent:vector",
+        "alg": "Ed25519",
+        "signature": "3X3Kh8idPIktWMrN7-tv9M3dCdP3GhD_J9_K3Z-OZPWhRMrVlVG5cK5Igv3SeXMCb9-nKCrKS8ub8ZiPpyjEBw",
+        "digest": "475517f9f426f7fe4b8984e52416a3e62458916f6ef878ca84ccd16f3f738003"
+      },
+      {
+        "payload": {
+          "id": "valid-ack",
+          "kind": "provider_ack",
+          "provider": "did:receipt:provider:vector",
+          "eventId": "valid-execution",
+          "correlationId": "vector-trace",
+          "actionDigest": "0cb664bbbc8b26a133f53f015e6aa15ee3024a88fb260990b58f2e98687b98c6",
+          "bookingId": "valid-booking",
+          "status": "confirmed",
+          "amountCents": 18000,
+          "currency": "EUR",
+          "at": "2026-10-25T09:12:03.000Z"
+        },
+        "signer": "did:receipt:provider:vector",
+        "alg": "Ed25519",
+        "signature": "u-WYKgKCaslMP5CPWhuQQDgEj-DzJifcEjflzAI976poPYy9WwHzayCbHJw43OCSSREoaMrR_4pjUCaXbc5pCw",
+        "digest": "103a2508f41a10a818509cd9404b11ac42fb5be74da41645a75a07f9f698c340"
+      }
+    ],
+    "delegation": null,
+    "metadata": {
+      "vector": "invalid-trust-anchor",
+      "simulated": true,
+      "noRealPurchase": true
+    }
+  }
+}

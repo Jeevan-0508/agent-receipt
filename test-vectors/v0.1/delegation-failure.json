@@ -1,0 +1,127 @@
+{
+  "version": "0.1",
+  "case": "delegation-failure",
+  "expected": "FAILED",
+  "trustedKeys": {
+    "did:receipt:user:vector": "MCowBQYDK2VwAyEAA6EHv_POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg",
+    "did:receipt:agent:vector": "MCowBQYDK2VwAyEAKay64UG8yvCyLhqU000LxzYeUm0L_hLIl5S8kyKWbdc",
+    "did:receipt:provider:vector": "MCowBQYDK2VwAyEAJUO5L_EJVRFHatyDadtt3JM2ZaEZeN2hQE7hBmypVZ0"
+  },
+  "package": {
+    "manifest": {
+      "version": "0.1.0",
+      "packageId": "vector-delegation-failure",
+      "createdAt": "2026-10-25T09:12:00.000Z",
+      "profile": "agent-receipt.demo.v1",
+      "recordCount": 2
+    },
+    "keyHints": {
+      "did:receipt:user:vector": "MCowBQYDK2VwAyEAA6EHv_POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg",
+      "did:receipt:agent:vector": "MCowBQYDK2VwAyEAKay64UG8yvCyLhqU000LxzYeUm0L_hLIl5S8kyKWbdc",
+      "did:receipt:provider:vector": "MCowBQYDK2VwAyEAJUO5L_EJVRFHatyDadtt3JM2ZaEZeN2hQE7hBmypVZ0"
+    },
+    "authorization": {
+      "payload": {
+        "id": "vector-grant",
+        "principal": "did:receipt:user:vector",
+        "agent": "did:receipt:agent:vector",
+        "action": "hotel.book",
+        "resource": "staywell://hotel/berlin/room",
+        "constraints": {
+          "maxAmountCents": 20000,
+          "currency": "EUR",
+          "endpoints": [
+            "https://sandbox.staywell.test/book"
+          ]
+        },
+        "validFrom": "2026-10-25T08:00:00.000Z",
+        "validUntil": "2026-10-25T18:00:00.000Z",
+        "delegation": {
+          "allowed": false,
+          "maxDepth": 0
+        },
+        "revocation": {
+          "status": "active",
+          "checkedAt": "2026-10-25T09:12:00.000Z"
+        },
+        "approval": {
+          "id": "vector-approval",
+          "actionDigest": "0cb664bbbc8b26a133f53f015e6aa15ee3024a88fb260990b58f2e98687b98c6",
+          "signedBy": "did:receipt:user:vector"
+        },
+        "kind": "authorization"
+      },
+      "signer": "did:receipt:user:vector",
+      "alg": "Ed25519",
+      "signature": "ue0s19sadNpseb71mYtLYAOfdne7xGo30G6s29hsPkoQ2ap8KG601J7vfr3gLwOhaWl7LQY3dndo_mj5nUmmBw",
+      "digest": "2e3395c2969421610c48b0583509f961de791fbca94acca127870e2936cde86f"
+    },
+    "records": [
+      {
+        "payload": {
+          "id": "delegation-failure-execution",
+          "kind": "execution",
+          "observed": true,
+          "sessionId": "vector-session",
+          "correlationId": "vector-trace",
+          "action": {
+            "type": "hotel.book",
+            "resource": "staywell://hotel/berlin/room",
+            "endpoint": "https://sandbox.staywell.test/book",
+            "amountCents": 18000,
+            "currency": "EUR",
+            "roomId": "vector-room",
+            "checkIn": "2026-11-03",
+            "checkOut": "2026-11-05",
+            "at": "2026-10-25T09:12:00.000Z"
+          },
+          "at": "2026-10-25T09:12:00.000Z",
+          "assertion": "observed-tool-call"
+        },
+        "signer": "did:receipt:agent:vector",
+        "alg": "Ed25519",
+        "signature": "ijI7tCuRh2BBAnvE4lnlqbi-UB0Dw2vM20Ol5oS4R2asZpSFCQkYN48pdYFV3EVtKQxYt2lQgAdV7SW4xdm9CQ",
+        "digest": "3dfc25b2f6db827d5f918cde51a68ceafc2fd8b73379beaf0894de2120fbec3e"
+      },
+      {
+        "payload": {
+          "id": "delegation-failure-ack",
+          "kind": "provider_ack",
+          "provider": "did:receipt:provider:vector",
+          "eventId": "delegation-failure-execution",
+          "correlationId": "vector-trace",
+          "actionDigest": "0cb664bbbc8b26a133f53f015e6aa15ee3024a88fb260990b58f2e98687b98c6",
+          "bookingId": "delegation-failure-booking",
+          "status": "confirmed",
+          "amountCents": 18000,
+          "currency": "EUR",
+          "at": "2026-10-25T09:12:03.000Z"
+        },
+        "signer": "did:receipt:provider:vector",
+        "alg": "Ed25519",
+        "signature": "HggOsB4UP4BKDQ6ApWn4biTOCSJzaQoWiB5_j3szSkB9Xr6KuQSjBETSjb-1KvAFYFC4Np63BUgXtxeADzgUBw",
+        "digest": "9d7f9c1ad81dc728d13ecc1aa13d9a0327f900e15c69738d6c6476b85004aacc"
+      }
+    ],
+    "delegation": {
+      "payload": {
+        "id": "delegation-failure-delegation",
+        "kind": "delegation",
+        "from": "did:receipt:agent:vector",
+        "to": "did:receipt:agent:helper",
+        "depth": 1,
+        "amountCents": 20000,
+        "at": "2026-10-25T09:12:00.000Z"
+      },
+      "signer": "did:receipt:agent:vector",
+      "alg": "Ed25519",
+      "signature": "EZI4eb7KZPreOGyLfp0Cogay19YvvA7S6j42q1cHn2T5CbEkKpAHdw7i_muns0q0SC1MmwGOIeT7nGgKeAp0Ag",
+      "digest": "4a727769276f9ec69ddcb89c7fc20318cf78ae38d867de650d21114a5622e030"
+    },
+    "metadata": {
+      "vector": "delegation-failure",
+      "simulated": true,
+      "noRealPurchase": true
+    }
+  }
+}

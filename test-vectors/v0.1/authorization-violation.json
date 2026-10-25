@@ -1,0 +1,113 @@
+{
+  "version": "0.1",
+  "case": "authorization-violation",
+  "expected": "FAILED",
+  "trustedKeys": {
+    "did:receipt:user:vector": "MCowBQYDK2VwAyEAA6EHv_POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg",
+    "did:receipt:agent:vector": "MCowBQYDK2VwAyEAKay64UG8yvCyLhqU000LxzYeUm0L_hLIl5S8kyKWbdc",
+    "did:receipt:provider:vector": "MCowBQYDK2VwAyEAJUO5L_EJVRFHatyDadtt3JM2ZaEZeN2hQE7hBmypVZ0"
+  },
+  "package": {
+    "manifest": {
+      "version": "0.1.0",
+      "packageId": "vector-authorization-violation",
+      "createdAt": "2026-10-25T09:12:00.000Z",
+      "profile": "agent-receipt.demo.v1",
+      "recordCount": 2
+    },
+    "keyHints": {
+      "did:receipt:user:vector": "MCowBQYDK2VwAyEAA6EHv_POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg",
+      "did:receipt:agent:vector": "MCowBQYDK2VwAyEAKay64UG8yvCyLhqU000LxzYeUm0L_hLIl5S8kyKWbdc",
+      "did:receipt:provider:vector": "MCowBQYDK2VwAyEAJUO5L_EJVRFHatyDadtt3JM2ZaEZeN2hQE7hBmypVZ0"
+    },
+    "authorization": {
+      "payload": {
+        "id": "vector-grant",
+        "principal": "did:receipt:user:vector",
+        "agent": "did:receipt:agent:vector",
+        "action": "hotel.book",
+        "resource": "staywell://hotel/berlin/room",
+        "constraints": {
+          "maxAmountCents": 20000,
+          "currency": "EUR",
+          "endpoints": [
+            "https://sandbox.staywell.test/book"
+          ]
+        },
+        "validFrom": "2026-10-25T08:00:00.000Z",
+        "validUntil": "2026-10-25T18:00:00.000Z",
+        "delegation": {
+          "allowed": false,
+          "maxDepth": 0
+        },
+        "revocation": {
+          "status": "active",
+          "checkedAt": "2026-10-25T09:12:00.000Z"
+        },
+        "approval": {
+          "id": "vector-approval",
+          "actionDigest": "7ccfa2fdae2fdb3bf3339aca2351e65b54c558bab687c8a15983a3dcbd708986",
+          "signedBy": "did:receipt:user:vector"
+        },
+        "kind": "authorization"
+      },
+      "signer": "did:receipt:user:vector",
+      "alg": "Ed25519",
+      "signature": "ju9CsBgjSIAYa05PKtHFgDJMvZZzfcQozDFhYtSCKXQAvGYEdF25unheUn5-aljYiD3KKqdCiCzUyu5YwwQQDQ",
+      "digest": "b0ebd413342657b849594d7075b4a56e73b6d20ac296adb6a50d22690cfe2b7f"
+    },
+    "records": [
+      {
+        "payload": {
+          "id": "authorization-violation-execution",
+          "kind": "execution",
+          "observed": true,
+          "sessionId": "vector-session",
+          "correlationId": "vector-trace",
+          "action": {
+            "type": "hotel.book",
+            "resource": "staywell://hotel/berlin/room",
+            "endpoint": "https://sandbox.staywell.test/book",
+            "amountCents": 45000,
+            "currency": "EUR",
+            "roomId": "vector-room",
+            "checkIn": "2026-11-03",
+            "checkOut": "2026-11-05",
+            "at": "2026-10-25T09:12:00.000Z"
+          },
+          "at": "2026-10-25T09:12:00.000Z",
+          "assertion": "observed-tool-call"
+        },
+        "signer": "did:receipt:agent:vector",
+        "alg": "Ed25519",
+        "signature": "6FiGn4Lf4f_ZkveM9iPI7ZUtY4Akuw7mEXGWJ4ylzhs_osXebCp5nBPEVPKEewRla2CDZJJgS-wOdXYZS-5bBA",
+        "digest": "e9a9e8a1610ce5dd26dd9c7656c33d4e5ca82b8ed0a427f4301beff21c07c3a8"
+      },
+      {
+        "payload": {
+          "id": "authorization-violation-ack",
+          "kind": "provider_ack",
+          "provider": "did:receipt:provider:vector",
+          "eventId": "authorization-violation-execution",
+          "correlationId": "vector-trace",
+          "actionDigest": "7ccfa2fdae2fdb3bf3339aca2351e65b54c558bab687c8a15983a3dcbd708986",
+          "bookingId": "authorization-violation-booking",
+          "status": "confirmed",
+          "amountCents": 45000,
+          "currency": "EUR",
+          "at": "2026-10-25T09:12:03.000Z"
+        },
+        "signer": "did:receipt:provider:vector",
+        "alg": "Ed25519",
+        "signature": "k1QQN6uUE1YRcJE6zG9rRlbgHEyPpItOZ0UmzU7_W07evovVPqrgj5pGWF50UzTP1My7TaEvzp3BMJuVMgkeDQ",
+        "digest": "5a553556a5f0bfbe41e089dbd09e04f1a7b329c70d9c277080a5357ca08c2863"
+      }
+    ],
+    "delegation": null,
+    "metadata": {
+      "vector": "authorization-violation",
+      "simulated": true,
+      "noRealPurchase": true
+    }
+  }
+}

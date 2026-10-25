@@ -1,0 +1,94 @@
+{
+  "version": "0.1",
+  "case": "missing-confirmation",
+  "expected": "INDETERMINATE",
+  "trustedKeys": {
+    "did:receipt:user:vector": "MCowBQYDK2VwAyEAA6EHv_POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg",
+    "did:receipt:agent:vector": "MCowBQYDK2VwAyEAKay64UG8yvCyLhqU000LxzYeUm0L_hLIl5S8kyKWbdc",
+    "did:receipt:provider:vector": "MCowBQYDK2VwAyEAJUO5L_EJVRFHatyDadtt3JM2ZaEZeN2hQE7hBmypVZ0"
+  },
+  "package": {
+    "manifest": {
+      "version": "0.1.0",
+      "packageId": "vector-missing-confirmation",
+      "createdAt": "2026-10-25T09:12:00.000Z",
+      "profile": "agent-receipt.demo.v1",
+      "recordCount": 1
+    },
+    "keyHints": {
+      "did:receipt:user:vector": "MCowBQYDK2VwAyEAA6EHv_POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg",
+      "did:receipt:agent:vector": "MCowBQYDK2VwAyEAKay64UG8yvCyLhqU000LxzYeUm0L_hLIl5S8kyKWbdc",
+      "did:receipt:provider:vector": "MCowBQYDK2VwAyEAJUO5L_EJVRFHatyDadtt3JM2ZaEZeN2hQE7hBmypVZ0"
+    },
+    "authorization": {
+      "payload": {
+        "id": "vector-grant",
+        "principal": "did:receipt:user:vector",
+        "agent": "did:receipt:agent:vector",
+        "action": "hotel.book",
+        "resource": "staywell://hotel/berlin/room",
+        "constraints": {
+          "maxAmountCents": 20000,
+          "currency": "EUR",
+          "endpoints": [
+            "https://sandbox.staywell.test/book"
+          ]
+        },
+        "validFrom": "2026-10-25T08:00:00.000Z",
+        "validUntil": "2026-10-25T18:00:00.000Z",
+        "delegation": {
+          "allowed": false,
+          "maxDepth": 0
+        },
+        "revocation": {
+          "status": "active",
+          "checkedAt": "2026-10-25T09:12:00.000Z"
+        },
+        "approval": {
+          "id": "vector-approval",
+          "actionDigest": "0cb664bbbc8b26a133f53f015e6aa15ee3024a88fb260990b58f2e98687b98c6",
+          "signedBy": "did:receipt:user:vector"
+        },
+        "kind": "authorization"
+      },
+      "signer": "did:receipt:user:vector",
+      "alg": "Ed25519",
+      "signature": "ue0s19sadNpseb71mYtLYAOfdne7xGo30G6s29hsPkoQ2ap8KG601J7vfr3gLwOhaWl7LQY3dndo_mj5nUmmBw",
+      "digest": "2e3395c2969421610c48b0583509f961de791fbca94acca127870e2936cde86f"
+    },
+    "records": [
+      {
+        "payload": {
+          "id": "missing-confirmation-execution",
+          "kind": "execution",
+          "observed": true,
+          "sessionId": "vector-session",
+          "correlationId": "vector-trace",
+          "action": {
+            "type": "hotel.book",
+            "resource": "staywell://hotel/berlin/room",
+            "endpoint": "https://sandbox.staywell.test/book",
+            "amountCents": 18000,
+            "currency": "EUR",
+            "roomId": "vector-room",
+            "checkIn": "2026-11-03",
+            "checkOut": "2026-11-05",
+            "at": "2026-10-25T09:12:00.000Z"
+          },
+          "at": "2026-10-25T09:12:00.000Z",
+          "assertion": "observed-tool-call"
+        },
+        "signer": "did:receipt:agent:vector",
+        "alg": "Ed25519",
+        "signature": "H2dXHEr98OPNvZNrJsdNUWsT-Dpt9RcwKcfi7H1vq6daGpulrvv6SPXPXsSTfh5AMaDfoRwc8svo7iJ-nAIZBQ",
+        "digest": "7528ab3343fc7b65e0b9600e1155cdf901e09a7b4e883c54e8b652cedae16fcb"
+      }
+    ],
+    "delegation": null,
+    "metadata": {
+      "vector": "missing-confirmation",
+      "simulated": true,
+      "noRealPurchase": true
+    }
+  }
+}

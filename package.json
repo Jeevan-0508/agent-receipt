@@ -1,0 +1,30 @@
+{
+  "name": "agent-receipt",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "workspaces": [
+    "apps/web"
+  ],
+  "scripts": {
+    "demo": "node cli/receipt.mjs demo",
+    "verify": "node cli/receipt.mjs verify",
+    "test": "node --test tests/*.test.mjs",
+    "test:e2e": "node tests/e2e/web.e2e.mjs",
+    "test:all": "npm run test && npm run test:e2e",
+    "lint": "node scripts/lint.mjs",
+    "secret-scan": "node scripts/secret-scan.mjs",
+    "mcp:demo": "node scripts/mcp-demo.mjs",
+    "vectors": "node scripts/generate-vectors.mjs",
+    "build": "npm run build --workspace apps/web",
+    "web:dev": "npm --workspace apps/web run dev"
+  },
+  "devDependencies": {
+    "playwright": "^1.64.1"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "canonicalize": "^5.1.0",
+    "zod": "^4.6.7"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-receipt.local/schemas/v0.1/evidence-package.schema.json",
+  "title": "AGENT//RECEIPT evidence package v0.1",
+  "type": "object",
+  "required": ["manifest", "authorization", "records"],
+  "properties": {
+    "manifest": {
+      "type": "object",
+      "required": ["version", "packageId", "createdAt", "profile", "recordCount"],
+      "properties": {
+        "version": { "const": "0.1.0" },
+        "packageId": { "type": "string", "minLength": 1 },
+        "createdAt": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{3})?Z$" },
+        "profile": { "const": "agent-receipt.demo.v1" },
+        "recordCount": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": true
+    },
+    "authorization": { "$ref": "#/$defs/signedRecord" },
+    "delegation": { "$ref": "#/$defs/signedRecord" },
+    "records": { "type": "array", "items": { "$ref": "#/$defs/signedRecord" } },
+    "keyHints": { "type": "object", "additionalProperties": { "type": "string" } }
+  },
+  "$defs": {
+    "signedRecord": {
+      "type": "object",
+      "required": ["payload", "signer", "alg", "signature", "digest"],
+      "properties": {
+        "payload": { "type": "object", "required": ["id"] },
+        "signer": { "type": "string", "minLength": 1 },
+        "alg": { "const": "Ed25519" },
+        "signature": { "type": "string", "minLength": 1 },
+        "digest": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

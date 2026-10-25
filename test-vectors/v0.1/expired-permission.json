@@ -1,0 +1,113 @@
+{
+  "version": "0.1",
+  "case": "expired-permission",
+  "expected": "FAILED",
+  "trustedKeys": {
+    "did:receipt:user:vector": "MCowBQYDK2VwAyEAA6EHv_POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg",
+    "did:receipt:agent:vector": "MCowBQYDK2VwAyEAKay64UG8yvCyLhqU000LxzYeUm0L_hLIl5S8kyKWbdc",
+    "did:receipt:provider:vector": "MCowBQYDK2VwAyEAJUO5L_EJVRFHatyDadtt3JM2ZaEZeN2hQE7hBmypVZ0"
+  },
+  "package": {
+    "manifest": {
+      "version": "0.1.0",
+      "packageId": "vector-expired-permission",
+      "createdAt": "2026-10-25T09:12:00.000Z",
+      "profile": "agent-receipt.demo.v1",
+      "recordCount": 2
+    },
+    "keyHints": {
+      "did:receipt:user:vector": "MCowBQYDK2VwAyEAA6EHv_POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg",
+      "did:receipt:agent:vector": "MCowBQYDK2VwAyEAKay64UG8yvCyLhqU000LxzYeUm0L_hLIl5S8kyKWbdc",
+      "did:receipt:provider:vector": "MCowBQYDK2VwAyEAJUO5L_EJVRFHatyDadtt3JM2ZaEZeN2hQE7hBmypVZ0"
+    },
+    "authorization": {
+      "payload": {
+        "id": "vector-grant",
+        "principal": "did:receipt:user:vector",
+        "agent": "did:receipt:agent:vector",
+        "action": "hotel.book",
+        "resource": "staywell://hotel/berlin/room",
+        "constraints": {
+          "maxAmountCents": 20000,
+          "currency": "EUR",
+          "endpoints": [
+            "https://sandbox.staywell.test/book"
+          ]
+        },
+        "validFrom": "2026-10-25T08:00:00.000Z",
+        "validUntil": "2026-10-25T18:00:00.000Z",
+        "delegation": {
+          "allowed": false,
+          "maxDepth": 0
+        },
+        "revocation": {
+          "status": "active",
+          "checkedAt": "2026-10-25T09:12:00.000Z"
+        },
+        "approval": {
+          "id": "vector-approval",
+          "actionDigest": "ed327b593e42cbf74dce5793de8955c7d2f5c58c2b5435af06df1c19f543530a",
+          "signedBy": "did:receipt:user:vector"
+        },
+        "kind": "authorization"
+      },
+      "signer": "did:receipt:user:vector",
+      "alg": "Ed25519",
+      "signature": "Opuk9vmbRZHuaRe2MOXt4yCBrTMN_oEl3LfPLi7JjG_UJ36p8XLJsMFIudSTiHEzOiD_nW4nT2wjxjgX06YmBA",
+      "digest": "c59c108ebf8539ba3ce98025c2c40714de9af7006d957a84804aa5051bf8f1a2"
+    },
+    "records": [
+      {
+        "payload": {
+          "id": "expired-permission-execution",
+          "kind": "execution",
+          "observed": true,
+          "sessionId": "vector-session",
+          "correlationId": "vector-trace",
+          "action": {
+            "type": "hotel.book",
+            "resource": "staywell://hotel/berlin/room",
+            "endpoint": "https://sandbox.staywell.test/book",
+            "amountCents": 18000,
+            "currency": "EUR",
+            "roomId": "vector-room",
+            "checkIn": "2026-11-03",
+            "checkOut": "2026-11-05",
+            "at": "2026-10-26T09:12:00.000Z"
+          },
+          "at": "2026-10-26T09:12:00.000Z",
+          "assertion": "observed-tool-call"
+        },
+        "signer": "did:receipt:agent:vector",
+        "alg": "Ed25519",
+        "signature": "GxRf3yq_5lcAc1e6MVnBPw1qFaAF7zALfXAY6kRnt8lkW7JRfrvwz3nfiyvahI4HhgGF20eoHfccQ0QxQoVkDA",
+        "digest": "8525fc746d35b254d58d8a447e369d10a2786eb8cb3fbf77fd42df8a40b3b9ad"
+      },
+      {
+        "payload": {
+          "id": "expired-permission-ack",
+          "kind": "provider_ack",
+          "provider": "did:receipt:provider:vector",
+          "eventId": "expired-permission-execution",
+          "correlationId": "vector-trace",
+          "actionDigest": "ed327b593e42cbf74dce5793de8955c7d2f5c58c2b5435af06df1c19f543530a",
+          "bookingId": "expired-permission-booking",
+          "status": "confirmed",
+          "amountCents": 18000,
+          "currency": "EUR",
+          "at": "2026-10-25T09:12:03.000Z"
+        },
+        "signer": "did:receipt:provider:vector",
+        "alg": "Ed25519",
+        "signature": "TGymaAKguES3ZKplqmaKDZaAv-lhra58OnUZ6TXbrMur2qMt3lf-Su8laVHshLdEnBYpFCIvuR3PMEZQrFRDDw",
+        "digest": "5011e335c368d8ad07c77b29259f2d5a311241b9255ad6fa41148d00042f6eba"
+      }
+    ],
+    "delegation": null,
+    "metadata": {
+      "vector": "expired-permission",
+      "simulated": true,
+      "noRealPurchase": true
+    }
+  }
+}

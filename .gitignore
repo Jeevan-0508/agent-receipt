@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.venv/
+__pycache__/
+.pytest_cache/
+.DS_Store
+*.log
+examples/travel-booking/package.json
+examples/travel-booking/trusted-keys.json
+examples/mcp-sdk/package.json
+examples/mcp-sdk/trusted-keys.json
