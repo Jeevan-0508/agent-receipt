@@ -40,6 +40,8 @@ The MCP demo uses an in-process official MCP client/server transport and a simul
 
 See [`docs/PUBLIC_BETA_CHECKLIST.md`](docs/PUBLIC_BETA_CHECKLIST.md) for exact validation results, publication blockers, and release commands.
 
+Platform-specific setup, trust-key provisioning, signer responsibilities, plaintext evidence handling, and the beta's production-enforcement limitations are documented in [`docs/GETTING_STARTED.md`](docs/GETTING_STARTED.md).
+
 ## Example verifier output
 
 ```text

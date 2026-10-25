@@ -4,7 +4,9 @@
   "license": "MIT",
   "type": "module",
   "workspaces": [
-    "apps/web"
+    "apps/web",
+    "packages/core",
+    "packages/sdk"
   ],
   "scripts": {
     "demo": "node cli/receipt.mjs demo",
@@ -14,6 +16,7 @@
     "test:all": "npm run test && npm run test:e2e",
     "lint": "node scripts/lint.mjs",
     "secret-scan": "node scripts/secret-scan.mjs",
+    "test:clean-room": "node scripts/clean-room-test.mjs",
     "mcp:demo": "node scripts/mcp-demo.mjs",
     "vectors": "node scripts/generate-vectors.mjs",
     "build": "npm run build --workspace apps/web",

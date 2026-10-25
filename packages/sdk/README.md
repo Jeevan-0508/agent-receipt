@@ -3,8 +3,7 @@
 The SDK is a small public wrapper around the existing verifier. It does not make network calls or custody keys.
 
 ```js
-import { actionDigest, generateSigner } from '../../packages/core/src/index.mjs';
-import { createReceiptAgent, definePolicy } from '../../packages/sdk/src/index.mjs';
+import { actionDigest, createReceiptAgent, definePolicy, generateSigner } from '@agent-receipt/sdk';
 
 const principalSigner = generateSigner('did:receipt:user:demo');
 const agentSigner = generateSigner('did:receipt:agent:demo');
@@ -25,3 +24,13 @@ npm run verify -- path/to/package.json
 ```
 
 This SDK is a local beta API. It does not provide remote OAuth, durable key custody, replay protection, or a real payment connector.
+
+## Local installation from a checkout
+
+The beta is intentionally installable from a repository checkout rather than published to npm:
+
+```bash
+npm install "../Receipt/packages/sdk"
+```
+
+The package exposes a stable `@agent-receipt/sdk` entry point and brings in the local `@agent-receipt/core` package. Consumers should not import files from `packages/*/src` directly.
