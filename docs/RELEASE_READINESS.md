@@ -24,7 +24,7 @@ Assessment date: 25 October 2026.
 | CLI export and offline verification | Passing; valid package reports `overall: VERIFIED` |
 | Scenario dispositions | 1 `VERIFIED`, 5 `FAILED`, 1 `INDETERMINATE` |
 | Dependency audit | `npm audit --audit-level=high`: 0 vulnerabilities |
-| Python verifier tests | Defined in CI for Python 3.12; not runnable locally because no Python interpreter is installed |
+| Python verifier tests | Passing in GitHub Actions on Python 3.12.15: 7 shared vectors passed; not runnable locally because no Python interpreter is installed |
 | Secret scan | Passing: repository scanner found no known private-key or credential patterns |
 | Type checking | Not applicable: implementation is JavaScript/ES modules; no TypeScript source is used |
 
@@ -58,7 +58,7 @@ Assessment date: 25 October 2026.
 
 ## Remaining release blockers
 
-For a public production release: complete an external security review, implement stronger key custody and revocation freshness, add network MCP/OAuth boundary tests, and decide whether to map to an existing receipt profile rather than maintain a private profile. Before declaring the beta fully green, run the Python suite locally or record a successful CI run.
+For a public production release: complete an external security review, implement stronger key custody and revocation freshness, add network MCP/OAuth boundary tests, and decide whether to map to an existing receipt profile rather than maintain a private profile. The public-beta CI gate is green; local Python execution remains unavailable on this workstation.
 
 ## Production-readiness assessment
 

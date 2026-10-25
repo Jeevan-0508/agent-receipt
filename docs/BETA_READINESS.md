@@ -16,7 +16,7 @@ Assessment date: 25 October 2026.
 ## Implemented but not independently reviewed
 
 - Cryptographic protocol design and threat model have adversarial local tests, but have not received an external security review.
-- The Python verifier is a separate implementation and has deterministic shared vectors, but this workstation cannot execute Python. CI is configured to execute the suite; no CI run is available from this workspace yet.
+- The Python verifier is a separate implementation and has deterministic shared vectors. This workstation cannot execute Python, but GitHub Actions verified all seven vectors on Python 3.12.15 (`7 passed`).
 - The official MCP SDK integration demonstrates local protocol plumbing; it is not a production network deployment.
 
 ## Planned
@@ -36,4 +36,4 @@ Assessment date: 25 October 2026.
 
 ## Release decision
 
-The repository is suitable for a local developer beta and external review preparation. It is not production-ready for consequential transactions. The remaining release blockers are an external security review, an operational trust/key-custody design, and a local/CI-confirmed Python run before calling the cross-language suite fully green.
+The repository is suitable for a public developer beta and external review preparation. It is not production-ready for consequential transactions. The remaining release blockers are an external security review and an operational trust/key-custody design; replay, revocation, and network OAuth limitations remain documented.

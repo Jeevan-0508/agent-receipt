@@ -4,7 +4,7 @@
 
 The repository defines the versioned `agent-receipt.demo.v1` profile in [`schemas/v0.1/evidence-package.schema.json`](../schemas/v0.1/evidence-package.schema.json). Signed payloads use RFC 8785 JSON Canonicalization Scheme, Ed25519, base64url-encoded SPKI public keys, and SHA-256 digests over the canonical bytes.
 
-The JavaScript verifier and the independent Python verifier consume the same seven deterministic packages under [`test-vectors/v0.1`](../test-vectors/v0.1): valid, tampered evidence, authorization violation, delegation failure, expired permission, missing confirmation, and invalid trust anchor. The JavaScript suite checks all seven. A Python 3.12 CI job is configured for the same cases, but it cannot be executed on the current Windows workstation because no Python interpreter is installed.
+The JavaScript verifier and the independent Python verifier consume the same seven deterministic packages under [`test-vectors/v0.1`](../test-vectors/v0.1): valid, tampered evidence, authorization violation, delegation failure, expired permission, missing confirmation, and invalid trust anchor. The JavaScript suite checks all seven. GitHub Actions verified the same cases on Python 3.12.15 with `7 passed`; the current Windows workstation still has no Python interpreter.
 
 The shared contract is deliberately narrower than a general receipt protocol. The Python implementation verifies the signed record structure, trusted Ed25519 keys, exact action digest, authorization constraints, delegation attenuation, provider binding, and the three relevant dispositions (`VERIFIED`, `FAILED`, `INDETERMINATE`). It does not import JavaScript code.
 

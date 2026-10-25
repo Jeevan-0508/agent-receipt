@@ -9,7 +9,7 @@ Assessment date: 25 October 2026.
 - The isolated workflow is documented in [`python/README.md`](../python/README.md): create a virtual environment, install `python/requirements.txt`, and run the verifier/tests.
 - If local installation is approved, install Python 3.12 with `winget install --id Python.Python.3.12 --exact`, open a new terminal, then run the isolated commands in [`python/README.md`](../python/README.md). That command was not run by this validation.
 - The GitHub workflow is configured for Python 3.12 and runs all seven shared vectors with `python -m pytest -q python/tests`.
-- Local Python agreement result: **not executed**. JavaScript agrees with all seven expected vector dispositions: **7/7**.
+- Local Python agreement result: unavailable because Python is not installed. GitHub CI executed Python 3.12.15 and reported **7 passed in 0.06s**. JavaScript agrees with all seven expected vector dispositions: **7/7**.
 
 ## Node and browser verification
 
@@ -32,7 +32,7 @@ The workflow at [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) is con
 - Python dependency installation and vector tests.
 - Workflow-level `contents: read` permissions and disabled checkout credential persistence.
 
-CI has **not** been claimed as passed because this workspace has not executed GitHub Actions.
+The first GitHub Actions run passed: [run 40225769466](https://github.com/Jeevan-0508/agent-receipt/actions/runs/40225769466). Node 20/22/24, Python 3.12, lint, build, audit, secret scan, and all vector tests passed. GitHub emitted only non-failing runner deprecation/migration annotations.
 
 ## Security release gate
 
@@ -49,10 +49,7 @@ Implemented and documented:
 
 ## Publication blockers
 
-Before calling this a fully validated public beta, complete at least one of:
-
-1. Run the Python suite in an isolated local Python 3.12+ environment; or
-2. Execute the GitHub Actions workflow and retain a successful run URL.
+The validation gate is satisfied by the successful GitHub Actions run. Local Python execution remains optional and unavailable on this workstation.
 
 Production deployment remains blocked on external security review, operational key custody, stateful replay prevention, fresh revocation infrastructure, and real transport/OAuth boundary testing.
 

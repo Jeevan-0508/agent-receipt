@@ -1,7 +1,7 @@
 # Limitations
 
 - This repository is a public-beta foundation, not a production security review.
-- The implementation uses RFC 8785 JCS for canonicalization and publishes seven shared Node/Python v0.1 vectors; the Python suite must still be executed in a Python 3.12+ environment before claiming a fully green local validation.
+- The implementation uses RFC 8785 JCS for canonicalization and publishes seven shared Node/Python v0.1 vectors; Python 3.12 CI verification is green, while this workstation still cannot run the Python suite locally.
 - The CLI has no network-backed trust registry, transparency log, HSM, or fresh revocation service.
 - The demo uses generated ephemeral keys and a simulated provider.
 - Instrumentation cannot prove actions that bypass the adapter.
