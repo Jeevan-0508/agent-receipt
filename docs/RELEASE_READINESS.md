@@ -10,6 +10,7 @@ Assessment date: 25 October 2026.
 - Signed execution records and independently signed, session-bound provider acknowledgements.
 - Fail-closed malformed input handling, package/payload size limits, duplicate identifier detection, and explicit `VERIFIED`, `FAILED`, `INDETERMINATE`, and `NOT_CHECKED` statuses.
 - Offline CLI, seven deterministic travel-booking scenarios, an official MCP SDK local server/client enforcement/recording integration, and a documented JavaScript SDK.
+- Paired local `@agent-receipt/core` and `@agent-receipt/sdk` tarballs, stable package entry points, TypeScript declarations, and an external-consumer install test.
 - Independent Python verifier source, versioned v0.1 schema, and seven shared interoperability vectors.
 - React investigation workbench with scenario navigation, authorization checks, execution trail, provenance graph, findings, dark mode, and responsive layout.
 
@@ -26,7 +27,9 @@ Assessment date: 25 October 2026.
 | Dependency audit | `npm audit --audit-level=high`: 0 vulnerabilities |
 | Python verifier tests | Passing in GitHub Actions on Python 3.12.15: 7 shared vectors passed; not runnable locally because no Python interpreter is installed |
 | Secret scan | Passing: repository scanner found no known private-key or credential patterns |
-| Type checking | Not applicable: implementation is JavaScript/ES modules; no TypeScript source is used |
+| Type checking | Passing: TypeScript consumer example resolves the public SDK declarations |
+| Packaged SDK installation | Passing: matching core and SDK tarballs install in an independent temporary project and CLI reports `overall: VERIFIED` |
+| GitHub Actions | Passing: [run 40227627459](https://github.com/Jeevan-0508/agent-receipt/actions/runs/40227627459), including Node 20/22/24, Python 3.12, browser, packaging, typecheck, build, audit, and secret scan |
 
 ## Security findings fixed in Phase 2
 
@@ -54,7 +57,7 @@ Assessment date: 25 October 2026.
 - The MCP integration is a real local official-SDK server/client path, but not a production network transport or OAuth implementation.
 - The UI reads generated scenario data and has no persistent package store or upload workflow.
 - The verifier authenticates signed statements; it cannot prove that a signer was truthful or that an instrumented boundary captured every action.
-- The independent Python verifier and shared vectors are implemented; local Python execution is blocked by the missing runtime and the configured CI job has not been run from this workspace.
+- The independent Python verifier and shared vectors are implemented; local Python execution is blocked by the missing runtime, while the public CI run above verifies Python 3.12.15.
 
 ## Remaining release blockers
 
@@ -62,4 +65,4 @@ For a public production release: complete an external security review, implement
 
 ## Production-readiness assessment
 
-**Local public-beta candidate: YES. Production deployment: NO.** The core is independently testable and the principal failure modes are covered, but Python 3.12 execution, operational trust services, key custody, and external review remain incomplete.
+**Local public-beta candidate: YES. Production deployment: NO.** The core, CLI, packaged SDK, MCP demo, browser workbench, and Python verifier are independently testable in CI; operational trust services, key custody, and external review remain incomplete.

@@ -12,6 +12,15 @@ const STATUS_META = {
 
 function Status({ value }) { const meta = STATUS_META[value] ?? STATUS_META.NOT_CHECKED; return <span className={`status ${meta.className}`}><i />{meta.label}</span>; }
 function Icon({ children }) { return <span className="nav-icon">{children}</span>; }
+function downloadReport(scenario) {
+  const report = { package: scenario.package, verification: scenario.result, generatedBy: 'AGENT//RECEIPT workbench', experimental: true };
+  const url = URL.createObjectURL(new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' }));
+  const anchor = document.createElement('a');
+  anchor.href = url;
+  anchor.download = `${scenario.package.manifest.packageId}-report.json`;
+  anchor.click();
+  URL.revokeObjectURL(url);
+}
 
 function App() {
   const [scenarioId, setScenarioId] = useState('valid-booking');
@@ -31,7 +40,7 @@ function App() {
       <div className="sidebar-footer"><div className="source-note"><span className="live-dot" />Local verifier connected</div><button className="settings"><Icon>⚙</Icon>Verifier settings</button><div className="profile"><div className="avatar">MC</div><div><strong>Maya Chen</strong><small>Principal · owner</small></div><span>•••</span></div></div>
     </aside>
     <main>
-      <header className="topbar"><div><span className="eyebrow">INVESTIGATION / {view.toUpperCase()}</span><h1>{view === 'overview' ? 'Package overview' : nav.find((n) => n[0] === view)?.[1]}</h1></div><div className="top-actions"><button className="icon-button" onClick={() => setDark(!dark)} aria-label="Toggle theme">{dark ? '☼' : '◐'}</button><button className="export-button">Export report <span>↗</span></button></div></header>
+      <header className="topbar"><div><span className="eyebrow">INVESTIGATION / {view.toUpperCase()}</span><h1>{view === 'overview' ? 'Package overview' : nav.find((n) => n[0] === view)?.[1]}</h1></div><div className="top-actions"><button className="icon-button" onClick={() => setDark(!dark)} aria-label="Toggle theme" aria-pressed={dark}>{dark ? '☼' : '◐'}</button><button className="export-button" onClick={() => downloadReport(scenario)}>Export report <span>↗</span></button></div></header>
       <section className="scenario-strip"><div className="strip-label">DEMO RUN <span>7 scenarios</span></div>{SCENARIO_DATA.map((s, i) => <button key={s.id} data-status={s.result.overall} className={scenarioId === s.id ? 'scenario active' : 'scenario'} onClick={() => setScenarioId(s.id)}><span className={`scenario-index ${STATUS_META[s.result.overall].className}`}>{String(i + 1).padStart(2, '0')}</span><span><strong>{s.label}</strong><small>{s.result.overall === 'VERIFIED' ? 'Evidence holds' : s.result.overall === 'INDETERMINATE' ? 'Needs evidence' : 'Boundary caught'}</small></span></button>)}</section>
       {view === 'overview' && <Overview scenario={scenario} />}
       {view === 'authorization' && <Authorization scenario={scenario} />}

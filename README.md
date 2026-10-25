@@ -36,6 +36,8 @@ The demo command writes an evidence package and prints the seven scenario result
 
 The MCP demo uses an in-process official MCP client/server transport and a simulated hotel provider. It never uses payment credentials or makes a real booking. The SDK example is in [`examples/js-sdk/agent.mjs`](examples/js-sdk/agent.mjs), with the public API documented in [`packages/sdk/README.md`](packages/sdk/README.md).
 
+For an independent package install, run `npm run test:packages`; it packs both local SDK tarballs, installs them in a temporary project, generates a receipt, and verifies it with the existing CLI. The matching TypeScript example is in [`examples/typescript-consumer/consumer.ts`](examples/typescript-consumer/consumer.ts). See the [MCP tutorial](docs/MCP_INTEGRATION_TUTORIAL.md), [FAQ](docs/FAQ.md), and [first-user testing guide](docs/FIRST_USER_TESTING.md).
+
 ![AGENT//RECEIPT investigation workbench](docs/assets/workbench.png)
 
 See [`docs/PUBLIC_BETA_CHECKLIST.md`](docs/PUBLIC_BETA_CHECKLIST.md) for exact validation results, publication blockers, and release commands.

@@ -14,10 +14,10 @@ jobs:
         node: [20, 22, 24]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           persist-credentials: false
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: ${{ matrix.node }}
           cache: npm
@@ -25,6 +25,8 @@ jobs:
       - run: npm run lint
       - run: npm test
       - run: npm run test:clean-room
+      - run: npm run test:packages
+      - run: npm run typecheck:consumer
       - run: npm run build
       - run: npm audit --audit-level=high
       - run: npm run secret-scan
@@ -32,13 +34,27 @@ jobs:
   python:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           persist-credentials: false
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
           cache: pip
           cache-dependency-path: python/requirements.txt
       - run: python -m pip install -r python/requirements.txt
       - run: python -m pytest -q python/tests
+
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e

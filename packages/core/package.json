@@ -7,6 +7,10 @@
     ".": "./src/index.mjs",
     "./scenarios": "./src/scenarios.mjs"
   },
-  "files": ["src", "package.json"],
+  "files": ["src", "index.d.ts", "package.json"],
+  "types": "./index.d.ts",
+  "dependencies": {
+    "canonicalize": "^5.1.0"
+  },
   "engines": { "node": ">=20" }
 }
