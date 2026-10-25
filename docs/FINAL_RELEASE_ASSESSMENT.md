@@ -1,6 +1,6 @@
-# Final release assessment — draft for review
+# Final release assessment
 
-Assessment target: Phase 5B–6 public beta preparation. GitHub Actions run [40227627459](https://github.com/Jeevan-0508/agent-receipt/actions/runs/40227627459) completed successfully on commit `a6085ef`.
+Assessment target: merged Phase 5B–6 public beta preparation. GitHub Actions run [40228340149](https://github.com/Jeevan-0508/agent-receipt/actions/runs/40228340149) completed successfully on final merge commit `382575b`.
 
 ## Implemented and locally validated
 
@@ -22,4 +22,4 @@ No production key custody, online revocation, stateful replay prevention, transp
 
 ## Release gate
 
-The repository is suitable for an experimental developer beta only after the dedicated CI run is green and the Phase 5A prerequisite PR is approved and merged by a human. This work does not merge either PR, publish npm/PyPI packages, create a release tag, deploy a website, or contact external communities.
+The repository is suitable for an experimental developer beta, not production deployment. PR #1 and PR #2 are merged, and the final main-branch CI run is green. No npm/PyPI packages, release tag, hosted website, or external launch announcements were published by this integration.
