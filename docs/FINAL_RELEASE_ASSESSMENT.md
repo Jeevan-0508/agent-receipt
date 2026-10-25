@@ -1,6 +1,6 @@
 # Final release assessment — draft for review
 
-Assessment target: Phase 5B–6 public beta preparation. This assessment is intentionally conservative and must be updated with the final GitHub Actions run before any release tag is considered.
+Assessment target: Phase 5B–6 public beta preparation. GitHub Actions run [40227627459](https://github.com/Jeevan-0508/agent-receipt/actions/runs/40227627459) completed successfully on commit `a6085ef`.
 
 ## Implemented and locally validated
 
@@ -9,6 +9,8 @@ Assessment target: Phase 5B–6 public beta preparation. This assessment is inte
 - JavaScript SDK with a stable package entry point, paired core/SDK tarballs, TypeScript declarations, and external consumer examples.
 - Independent Python verifier and seven shared vectors; CI is the authoritative Python runtime check on this Windows workstation.
 - React workbench and browser coverage from the existing beta validation.
+
+The green CI run reports Node 20/22/24, Python 3.12 (`7` shared vectors), browser E2E, packaging, typecheck, build, dependency audit, and secret scan passing.
 
 ## Not independently reviewed
 

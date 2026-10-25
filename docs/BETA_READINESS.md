@@ -9,9 +9,11 @@ Assessment date: 25 October 2026.
 - Official MCP SDK local server/client path using `McpServer`, `Client`, and `InMemoryTransport`. A registered `book_hotel` call is blocked before the simulated provider when authorization fails.
 - Portable package export and independent CLI verification.
 - Public JavaScript SDK: `definePolicy()` and `createReceiptAgent().callTool()`.
+- Paired local SDK/core tarballs, stable package entry points, TypeScript declarations, and an external-consumer install check.
 - Independent Python verifier source and shared v0.1 test vectors.
 - React investigation workbench and Playwright browser coverage for loading, all seven scenarios, findings, provenance, responsive layout, console errors, and runtime page errors.
 - CI definition for Node 20/22/24, Python 3.12, dependency auditing, syntax linting, and repository secret-pattern scanning.
+- Green GitHub Actions run [40227627459](https://github.com/Jeevan-0508/agent-receipt/actions/runs/40227627459) covering Node 20/22/24, Python 3.12, browser E2E, package installation, typechecking, build, audit, and secret scanning.
 
 ## Implemented but not independently reviewed
 
