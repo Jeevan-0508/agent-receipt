@@ -93,3 +93,15 @@ For independent verification, create an isolated Python environment and run `pyt
 No private keys, credentials, or external release actions are part of this repository. See [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`SECURITY.md`](SECURITY.md).
 
 Licensed under the [MIT License](LICENSE). This project is not production-ready and makes no regulatory-certification claim.
+
+
+## What this project demonstrates
+
+- **Authorization-to-outcome reasoning** — separates intent, authority, execution, outcome, and verification instead of treating one agent log as proof.
+- **Cryptographic evidence handling** — signs canonical JSON with Ed25519, binds approvals to actions, and detects tampering without claiming that signatures make statements true.
+- **Cross-language verification** — shares deterministic vectors between the Node implementation and an independent Python verifier.
+- **Safe integration boundaries** — enforces authorization before a simulated MCP provider call and keeps missing provider evidence as \`INDETERMINATE\`, not success or failure.
+
+## Maturity and boundaries
+
+AGENT//RECEIPT is an independently developed experimental developer beta. It is local and simulated: it does not make purchases, call a real booking provider, or provide a hosted verification service. The repository explicitly excludes production-readiness, independent security-audit, key-management, replay-prevention, and real transport/OAuth claims. Treat the [public beta checklist](docs/PUBLIC_BETA_CHECKLIST.md), [threat model](docs/THREAT_MODEL.md), and [limitations](docs/LIMITATIONS.md) as part of the product evidence.
