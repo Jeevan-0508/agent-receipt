@@ -6,6 +6,10 @@
 
 AGENT//RECEIPT is an open-source authorization-to-outcome verification workbench for autonomous AI agents. It separates intent, authority, execution, outcome, and verification into distinct evidence layers, then exports a portable evidence package that can be checked offline.
 
+## Live demo
+
+[Open the deployed investigation workbench](https://jeevan-0508.github.io/agent-receipt/)
+
 ## What is working in this repository
 
 - Node.js core and CLI for authorization evaluation, Ed25519 signing, tamper detection, approval/action binding, delegation checks, revocation freshness, and outcome provenance.
